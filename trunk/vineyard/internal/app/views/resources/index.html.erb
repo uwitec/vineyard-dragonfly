@@ -1,0 +1,161 @@
+<div class="piece960">
+	<div class="piece_hd1"></div>
+	<div class="piece_bd1">	
+		<table class="resource-table">
+			<thead>
+				<tr class="col-name">
+					<th></th>
+					<th class="baobei">宝贝</th>
+					<th class="breed">葡萄品种</th>
+					<th class="reference_year">参考年份</th>
+					<th class="color">色泽</th>
+					<th class="odour">香味</th>
+					<th class="alcoholic">酒精度</th>
+					<th class="capacity">容量</th>
+					<th class="score">分数</th>
+					<th class="operate">发布操作</th>
+					<th class="other">其它操作</th>
+				</tr>
+				<tr class="sep-row">
+					<td colspan="11"></td>
+				</tr>
+				<tr class="toolbar">
+					<td colspan="9">
+						<label>
+							<input type="checkbox" id="check_all_resources">全选
+							<a id="delete_checked_resources" class="toolbtn" href="##">删除</a>
+							<%= link_to '添加宝贝', new_resource_path, :class => 'toolbtn'%>
+							<%= form_tag("/resources/delete", :method => "post", :id => "delete_checked_resources_form" ) do %>
+								<%= hidden_field_tag(:ids) %>
+							<% end %>
+						</label>
+					</td>
+					<td colspan="2">
+						<div class="paginator-top">
+							<div class="paginator-previous-grey g-u">
+								<span class="paginator-arrow paginator-arrow-left-grey"></span>
+							</div>
+							<a class="paginator-next g-u">下一页<span class="paginator-arrow paginator-arrow-right-orange"></span></a>
+						</div>
+					</td>
+				</tr>
+			</thead>
+			<% @resources.each do |resource| %>
+			<tbody>
+				<tr class="sep-row">
+					<td colspan="11"></td>
+				</tr>
+				<tr class="order-hd">
+					<td colspan="11">
+						<span class="no">
+							<label>
+								<input type='checkbox' name='resource_check_box' value='<%= resource.id %>'>	
+								宝贝编号:
+								<span class="baobei-num"><%= resource.id %></span>
+							</label>
+						</span>
+						<span class="create-time">
+							创建时间：<%= resource.created_at %>
+						</span>
+						<span class="vender">
+
+						</span>
+					</td>
+				</tr>
+				<tr class="order-bd">
+					<td class="baobei" colspan="2">
+						<a href="/resources/<%= resource.id %>" target="_blank" title="查看宝贝详情" class="pic s80"><img alt="查看宝贝详情" class="s80"></img></a>	
+						<div class="desc" style="padding: 10px 0;">
+							<%= link_to "#{resource.name}", resource, :class => "baobei-name", :id => "resource_name_#{resource.id}" %>	
+							<div class="spec">
+								<span>种类：<%=resource.category %></span><br>
+								<span>产地：<%=resource.orign_country %></span>
+							</div>
+						</div>
+					</td>
+					<td class="breed text-center">
+						<%= resource.breed %>
+					</td>
+					<td class="reference_year text-center">
+						<%= resource.reference_year %>
+					</td>
+					<td class="color text-center">
+						<%= resource.color %>
+					</td>
+					<td class="odour text-center">
+						<%= resource.odour %>
+					</td>
+					<td class="alcoholic text-center">
+						<%= resource.alcoholic %><span>%</span>
+					</td>
+					<td class="capacity text-center">
+						<%= resource.capacity %><span>ml</span>
+					</td>
+					<td class="score text-center">
+						<%= resource.score %>
+					</td>
+					<td class="operate text-center">
+						<a href="" class="product_dialog_button" name=<%= resource.id %>>产品</a>
+						<a href="" class="quota_dialog_button" name=<%= resource.id %>>配额</a>
+						<a href="" class="images_dialog_button" name=<%= resource.id %>>图片</a>
+					</td>
+					<td class="other text-center">
+						<%= link_to '编辑', edit_resource_url(resource) %>
+						<a href="##" name=<%= resource.id %> class="delete_resource_link">删除</a>
+						<%= form_tag("/resources/#{ resource.id}", :method => "delete",:id => "delete_resource_form_#{ resource.id}") do %>
+						<% end %>
+					</td>
+				</tr>
+			</tbody>	
+			<% end %>
+			<tfoot>
+				<tr class="sep-row">
+					<td colspan="11"></td>
+				</tr>
+				<tr class="toolbar skin-gray">
+					<td colspan="11">
+						<%= link_to '添加宝贝', new_resource_path, :class => 'toolbtn'%>
+					</td>
+				</tr>
+			</tfoot>
+		</table>
+	</div>
+	<div class="piece_ft1"></div>
+</div>
+
+<div id="product_dialog" title="产品属性" style="display: none;">
+	<%= render "products/form" %>
+</div>
+ 
+<div id="product_edit_dialog" title="产品属性" style="display: none;">
+	<%= render "products/form_edit" %>
+</div>
+
+<div id="product_destroy_dialog" style="display: none;">
+	<%= render "products/form_destroy" %>
+</div>
+
+<div id="quota_dialog" title="配额管理" style="display: none;">
+	<%= render 'quota/form' %>
+</div>
+
+<div id="quota_edit_dialog" title="配额属性" style="display: none;">
+	<%= render "quota/form_edit" %>
+</div>
+
+<div id="quota_destroy_dialog" style="display: none;">
+	<%= render "quota/form_destroy" %>
+</div>
+
+<div id="images_dialog" title="图例管理" style="display: none;">
+	<%= render "images/form" %>
+</div>
+
+<div id="image_destroy_dialog" style="display: none;">
+	<%= render "images/form_destroy" %>
+</div>
+
+<%= javascript_include_tag "resources" %>
+<%= javascript_include_tag "products" %>
+<%= javascript_include_tag "quota" %>
+<%= javascript_include_tag "images" %>

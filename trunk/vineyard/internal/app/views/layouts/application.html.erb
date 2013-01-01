@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>葡萄庄园（管理端）</title>
+  <%= stylesheet_link_tag    "application" %>
+  <%= javascript_include_tag "application" %>
+  <%= javascript_include_tag "jquery.form" %>
+  <%= javascript_include_tag "jquery.validate.min" %>
+  <%= javascript_include_tag "jquery-ui-1.8.22.custom.min" %>
+</head>
+<body>
+<div id="head_wrap">
+		<div id="logo_bar">
+			<h1 class="logo_detail">葡萄庄园 Vineyard</h1>
+		</div>
+		<div id="navigation">
+			<% if session[:admin_id] != nil %>
+				<ul class="navi_list fl">
+					<li>
+						<span class="login_info" style="margin-left: 10px;"><%=session[:admin_id] %></span>
+					</li>
+					<li>
+						<a class="import c" style="padding: 2px 8px 3px;" href="/alogout">退出</a>
+					</li>
+				</ul>
+			<% end %>
+		</div>
+		<div id="head_bottom"></div>
+	</div>
+	<div id="body_wrap">
+		<div id="left_body">
+			<div class="piece250">
+				<div class="piece_hd">
+				</div>
+				<div class="piece_bd">
+					<ul class="vertical" style="margin-bottom: 10px;">
+						<li class="level1_title">
+						<span>管理城市</span>
+						</li>
+						<li class="level2_title">
+							<a href="/cities">已开发的市场</a>
+						</li>
+						<li class="level2_title">
+							<a href="/cities/new">新开发市场</a>
+						</li>
+					</ul>
+					<ul class="vertical">
+						<li class="level1_title">
+						<span>管理庄园</span>
+						</li>
+						<li class="level2_title">
+							<a href="/resources">已收录的宝贝</a>
+						</li>
+						<li class="level2_title">
+							<a href="/resources/new">添加宝贝</a>
+						</li>
+						<li class="level2_title">
+							<a href="/products">已开发的产品</a>
+						</li>
+						<!--
+						<li class="level2_title">
+							<a href="/products/new">开发新产品</a>
+						</li>
+						-->
+					</ul>
+				</div>
+				<div class="piece_ft">
+				</div>
+			</div>
+		</div>
+		<div id="right_body">
+			<%= yield %>
+		</div>
+		<div id="foot_wrap"></div>
+	</div>
+</body>
+</html>

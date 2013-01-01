@@ -1,0 +1,35 @@
+<%= form_tag("/quota", :method => "post", :id => "quota_form") do %>
+	<p class="notice">
+	<% if flash[:notice] != nil %>
+		<img src="/assets/error_01.png">&nbsp;<%= flash[:notice] %>
+	<% end %>
+	</p>
+	<div class="open_cities">
+		<%= label_tag :open_cities_ids, '业务开放的城市' %>
+		<%= select_tag(:open_cities_ids,'',:multiple => true, :size => 10, :style => "width:120px;", :id => "open_cities_select") %>
+	</div>
+	<div class="multiple_option_move_tips">
+		<ul style="margin-top:10px;">
+			<li><button id="all_unquota_cities_go">>>></button></li>
+			<li><button id="selected_unquota_cities_go">>></button></li>
+			<li><button id="selected_unquota_cities_back"><<</button></li>
+			<li><button id="all_unquota_cities_back"><<<</button></li>
+		</ul>
+	</div>
+	<div class="quota_cities">
+		<%= select_tag(:quota_cities_ids,'', :multiple => true, :size => 10, :style => "width:120px;", :id => "quota_cities_select") %>
+		<%= label_tag :quota_cities_ids, '需分配配额的城市' %>
+	</div>
+	<div class="quantity" style="clear: both">
+		<span style="float: left;">数&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;量<em>*</em></span>
+		<%= text_field_tag :quantity, '', :class => "number required", :maxlength => 6, :size => 6 , :style => "margin-left: 15px;"%>
+		<span style="margin-left: 10px;">件</span>
+	</div>
+	<div class="actions" style="margin-top: 10px">
+		<%= submit_tag "更新", :class => 'create_button', :id => 'create_quota_button'%>
+		<span style="color: green; font-weight: bold;">如要修改已分配城市的配额，请双击该城市</span>
+	</div>
+<% end %>
+
+
+

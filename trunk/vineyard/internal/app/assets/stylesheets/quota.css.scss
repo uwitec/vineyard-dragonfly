@@ -1,0 +1,60 @@
+// Place all the styles related to the Quotas controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+.open_cities {
+	float: left;
+}
+
+.multiple_option_move_tips {
+	float: left;
+}
+
+.quota_cities {
+	float: left;
+}
+
+.open_cities label, .quota_cities label {
+	vertical-align: top;
+}
+
+.multiple_option_move_tips li {
+	padding: 8px;
+}
+
+.multiple_option_move_tips li button {
+	font-size: 14px;
+	font-weight: bold;
+	line-height: 16px;
+	background: #689200;
+	border-radius: 7px;
+	padding: 2px 8px 3px;
+	color: white;
+	width: 40px;
+	border: 0px;
+}	
+
+.quantity {
+	margin-top: 10px;
+	padding-top: 10px;
+	overflow: hidden;
+	line-height: 30px;
+}
+
+.privilege {
+	margin-top: 10px;
+	overflow: hidden;
+	line-height: 30px;
+}
+
+.number {
+	border: 1px solid #CFCFCF;
+	width: 70px;
+	height: 30px;
+	margin-left: 33px;
+	line-height: 30px;
+	border-radius: 3px;
+	padding-left: 8px;
+}
+
+
+
