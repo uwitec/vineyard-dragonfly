@@ -1,0 +1,45 @@
+// Place all the styles related to the logins controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+.username {
+	margin-left: 20px;
+	overflow: hidden;
+	line-height: 30px;
+}
+
+.password {
+	margin-top: 10px;
+	margin-left: 33px;
+	overflow: hidden;
+	line-height: 30px;
+}
+
+#user_login_form {
+	width: 360px;
+}
+
+#user_login_form span {
+	color: #333;
+	font-size: 14px;
+	float: left;
+	vertical-align: middle;
+	text-align: center;
+}
+
+#user_login_form .text {
+	border: 1px solid #CFCFCF;
+	float: left;
+	width: 254px;
+	height: 30px;
+	margin-left: 5px;
+	line-height: 30px;
+	border-radius: 3px;
+	padding-left: 8px;
+}
+
+#user_login_form .actions {
+	margin-left: 92px;
+	margin-top: 20px;
+	overflow: hidden;
+	zoom: 1;
+}

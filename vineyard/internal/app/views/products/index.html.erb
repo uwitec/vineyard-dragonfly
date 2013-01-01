@@ -1,0 +1,96 @@
+<div class="piece960">
+	<div class="piece_hd1"></div>
+	<div class="piece_bd1">	
+		<table class="resource-table">
+			<thead>
+				<tr class="col-name">
+					<th></th>
+					<th>产品</th>
+					<th>价格</th>
+					<th>有效期</th>
+					<th></th>
+				</tr>
+				<tr class="sep-row">
+					<td colspan="5"></td>
+				</tr>
+				<tr class="toolbar">
+					<td colspan="4">
+						<label>
+							<input type="checkbox" id="check_all_products">
+							<a id="delete_checked_products" class="toolbtn" href="##">批量删除</a>
+							<%= form_tag("/products/delete", :method => "post", :id => "delete_checked_products_form" ) do %>
+								<%= hidden_field_tag(:ids) %>
+							<% end %>
+						</label>
+					</td>
+					<td>
+						<div class="paginator-top">
+							<div class="paginator-previous-grey g-u">
+								<span class="paginator-arrow paginator-arrow-left-grey"></span>
+							</div>
+							<a class="paginator-next g-u">下一页<span class="paginator-arrow paginator-arrow-right-orange"></span></a>
+						</div>
+					</td>
+				</tr>
+			</thead>
+			<% @products.each do |product| %>
+			<tbody>
+				<tr class="sep-row">
+					<td colspan="5"></td>
+				</tr>
+				<tr class="order-hd">
+					<td colspan="5">
+						<span class="no">
+							<label>
+								<input type='checkbox' name='product_check_box' value='<%= product.id %>'>
+								产品编号：
+								<span class="baobei-num"><%= product.id %></span>
+							</label>
+						</span>
+						<span class="create-time">
+							创建时间：<%= product.created_at %>
+						</span>
+						<span class="vender">
+
+						</span>
+					</td>
+				</tr>
+				<tr class="order-bd">
+					<td class="baobei" colspan="2">
+						<a href="/products/<%= product.id %>" target="_blank" title="查看产品详情" class="pic s80"><img alt="查看宝贝详情" class="s80"></img></a>
+						<div class="desc">
+							<%= link_to "#{product.name}", product, :class => "baobei-name" %>								<div class="spec">
+								<span></span>
+							</div>
+						</div>
+					</td>
+					<td class="price">
+						<%= product.price %>
+					</td>
+					<td class="create-time">
+						<%= product.expiration_date %>
+					</td>
+					<td>
+						<%= link_to '编辑', edit_product_url(product) %>
+						<a href="##" name=<%= product.id %> class="delete_product_link">删除</a>
+						<%= form_tag("/products/#{ product.id}", :method => "delete",:id => "delete_product_form_#{ product.id}") do %>
+						<% end %>
+					</td>
+				</tr>
+			</tbody>
+			<% end %>
+			<tfoot>
+				<tr class="sep-row">
+					<td colspan="5"></td>
+				</tr>
+				<tr class="toolbar skin-gray">
+					<td colspan="5">
+					</td>
+				</tr>
+			</tfoot>
+		</table>
+	</div>
+	<div class="piece_ft1"></div>
+</div>
+ 
+<%= javascript_include_tag "products" %>

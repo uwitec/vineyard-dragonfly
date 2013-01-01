@@ -1,0 +1,302 @@
+<%= form_for @resource, :html => {:id=> "resource_form"} do |f| %>
+	<% if @resource.errors.any? %>
+		<div id="error_explanation">
+		<h2>共有<%= @resource.errors.count %>错误，请按下面的提示修正先!!</h2>
+			<ul>
+				<% @resource.errors.full_messages.each do |msg| %>
+					<li><img src="/assets/error_01.png"><%= msg %></li>
+				<% end %>
+			</ul>	
+		</div>
+	<% end %>
+	<p class="notice">
+	<% if flash[:notice] != nil %>
+		<img src="/assets/error_01.png">&nbsp;<%= flash[:notice] %>
+	<% end %>
+	</p>
+	<div class="field_name width600" style="margin-left: 47px">
+		<span><%= f.label :name, '名称' %><em>*</em></span>
+		<%= f.text_field :name, :class => "text required", :maxlength => "32", :style => "color: rgb(0, 0, 0);"%>
+	</div>
+	<div class="field_name width600" style="margin-left: 47px">
+		<dl class="topitems">
+			<dt><%= f.label :type, '种类' %><em>*</em></dt>
+			<dd style="width: 400px">
+				<ul style="margin-left: 13px;">
+					<li id="red_wine" class="wine-type">
+						<a href="#" >红葡萄酒</a>
+					</li>
+					<li id="white_wine" class="wine-type">
+						<a href="#">白葡萄酒</a>
+					</li>
+				</ul>
+			</dd>
+		</dl>
+		<dl class="subitems">
+			<dt></dt>
+			<dd style="width: 400px">
+				<ul id="sub-red-wine-items" class="sub-wine-items" style="margin-left: 13px; display: none;">
+					<li class="sub-red-wine-item">
+						<a href="#">干红</a>
+					</li>
+					<li class="sub-red-wine-item">
+						<a href="#">半干红</a>
+					</li>
+					<li class="sub-red-wine-item">
+						<a href="#">干甜红</a>
+					</li>
+					<li class="sub-red-wine-item">
+						<a href="#" >甜红</a>
+					</li>
+					<li class="sub-red-wine-item">
+						<a href="#">干甜搭</a>
+					</li>
+				</ul>
+				<ul id="sub-white-wine-items" class="sub-wine-items" style="margin-left: 13px; display: none;">
+					<li class="sub-white-wine-item">
+						<a href="###">干白</a>
+					</li>
+					<li class="sub-white-wine-item">
+						<a href="#">半干白</a>
+					</li>
+					<li class="sub-white-wine-item">
+						<a href="#">干甜白</a>
+					</li>
+					<li class="sub-white-wine-item">
+						<a href="#">甜白</a>
+					</li>
+					<li class="sub-white-wine-item">
+						<a href="#">贵腐酒</a>
+					</li>
+					<li class="sub-white-wine-item">
+						<a href="#">干甜搭</a>
+					</li>
+				</ul>
+			</dd>
+		</dl>
+		<%= f.text_field :category, :class => "text required",:maxlength => "32", :style => "color: rgb(0, 0, 0); margin-left: 57px; clear: both;", :readonly => true%>
+	</div>
+	<div class="field_name width600" style="margin-left: 47px">
+		<dl class="subitems">
+			<dt><%= f.label :breed, '品种' %><em>*</em></dt>
+			<dd style="width: 400px;">
+				<ul id="no-wine-type-selected" class="grape-breed-ul" style="margin-left: 13px;">
+					<li><span>请先选择种类</span></li>
+				</ul>
+				<ul id="red-wine-grape-breed" class="grape-breed-ul" style="margin-left: 13px; display: none;">
+					<li id="cabernet-sauvignon" name="cabernet-sauvignon" class="grape-breed">
+						<a href="#">赤霞珠</a>
+					</li>
+					<li id="merlot" name="merlot" class="grape-breed">
+						<a href="#">美乐</a>
+					</li>
+					<li id="pinot-noir" name="pinot-noir" class="grape-breed">
+						<a href="#">黑皮诺</a>
+					</li>
+					<li id="syrah-shiraz" name="syrah-shiraz" class="grape-breed">
+						<a href="#">西拉/设拉子</a>
+					</li>
+					<li id="cabernet-franc" name="cabernet-franc" class="grape-breed">
+						<a href="#">品丽珠</a>
+					</li>
+					<li id="malbec" name="malbec" class="grape-breed">
+						<a href="#">马尔贝克</a>
+					</li>
+					<li id="nebbiolo" name="nebbiolo" class="grape-breed">
+						<a href="#">内比奥罗</a>
+					</li>
+					<li id="sangiovese" name="sangiovese" class="grape-breed">
+						<a href="#">桑娇维塞</a>
+					</li>
+					<li id="grenache-granacha" name="grenache-granacha" class="grape-breed">
+						<a href="#">歌海娜</a>
+					</li>
+					<li id="tempranillo" name="tempranillo" class="grape-breed">
+						<a href="#">丹魄</a>
+					</li>
+				</ul>
+				<ul id="white-wine-grape-breed" class="grape-breed-ul" style="margin-left: 13px; display: none;">
+					<li id="" name="" class="grape-breed">
+						<a href="#">霞多丽</a>
+					</li>
+					<li id="" name="" class="grape-breed">
+						<a href="#">雷司令</a>
+					</li>
+					<li id="" name="" class="grape-breed">
+						<a href="#">长相思</a>
+					</li>
+					<li id="" name="" class="grape-breed">
+						<a href="#">赛美蓉</a>
+					</li>
+					<li id="" name="" class="grape-breed">
+						<a href="#">白诗南</a>
+					</li>
+					<li id="" name="" class="grape-breed">
+						<a href="#">维欧尼</a>
+					</li>
+					<li id="" name="" class="grape-breed">
+						<a href="#">琼瑶浆</a>
+					</li>
+					<li id="" name="" class="grape-breed">
+						<a href="#">希尔瓦那</a>
+					</li>
+					<li id="" name="" class="grape-breed">
+						<a href="#">米勒图高</a>
+					</li>
+					<li id="" name="" class="grape-breed">
+						<a href="#">麝香</a>
+					</li>
+					<li id="" name="" class="grape-breed">
+						<a href="#">灰皮诺</a>
+					</li>
+					<li id="" name="" class="grape-breed">
+						<a href="#">穆斯卡黛尔</a>
+					</li>
+					<li id="" name="" class="grape-breed">
+						<a href="#">白玉霓/棠比内洛</a>
+					</li>
+					<li id="" name="" class="grape-breed">
+						<a href="#">马尔瓦西</a>
+					</li>
+					<li id="" name="" class="grape-breed">
+						<a href="#">帕罗米诺</a>
+					</li>
+					<li id="" name="" class="grape-breed">
+						<a href="#">白皮诺</a>
+					</li>
+					<li id="" name="" class="grape-breed">
+						<a href="#">特浓情</a>
+					</li>
+					<li id="" name="" class="grape-breed">
+						<a href="#">维蒂奇诺</a>
+					</li>
+					<li id="" name="" class="grape-breed">
+						<a href="#">勃艮第香瓜</a>
+					</li>
+					<li id="" name="" class="grape-breed">
+						<a href="#">富尔民特</a>
+					</li>
+				</ul>
+			</dd>
+		</dl>
+		<%= f.text_field :breed, :class => "text required" ,:maxlength => "32", :style => "color: rgb(0, 0, 0); margin-left: 57px; clear: both;", :readonly => true %>
+	</div>
+	<div class="field_name width600" style="margin-left: 34px;">
+		<dl class="topitems">
+			<dt><%= f.label :orign_country, '原产国' %><em>*</em></dt>
+			<dd style="width: 400px">
+				<ul style="margin-left: 13px;">
+					<li id="french" class="contry">
+						<a href="#">法国</a>
+					</li>
+					<li id="italy" class="contry">
+						<a href="#">意大利</a>
+					</li>
+					<li id="australian" class="contry">
+						<a href="#">澳大利亚</a>
+					</li>
+					<li id="germany" class="contry">
+						<a href="#">德国</a>
+					</li>
+					<li id="america" class="contry">
+						<a href="#">美国</a>
+					</li>
+					<li id="spain" class="contry">
+						<a href="#">西班牙</a>
+					</li>
+					<li id="chile" class="contry">
+						<a href="#">智利</a>
+					</li>
+					<li id="new-zealand" class="contry">
+						<a href="#">新西兰</a>
+					</li>
+					<li id="argentina" class="contry">
+						<a href="#">阿根廷</a>
+					</li>
+					<li id="south-africa" class="contry">
+						<a href="#">南非</a>
+					</li>
+						<li id="austria" class="contry">
+						<a href="#">奥地利</a>
+					</li>
+					<li id="portugal" class="contry">
+						<a href="#">葡萄牙</a>
+					</li>
+					<li id="canada" class="contry">
+						<a href="#">加拿大</a>
+					</li>
+					<li id="hungary" class="contry">
+						<a href="#">匈牙利</a>
+					</li>
+					<li id="greece" class="contry">
+						<a href="#">希腊</a>
+					</li>
+				</ul>
+			</dd>
+		</dl>
+		<%= f.text_field :orign_country, :class => "text required" ,:maxlength => "12", :style => "color: rgb(0, 0, 0); margin-left: 70px; clear: both; width: 100px;", :readonly => true %>
+	</div>
+	<div class="field_name width600" style="margin-left: 34px;">
+		<span><%= f.label :orign_area, '原产地' %></span>
+		<%= f.text_field :orign_area, :class => "number", :maxlength => "32", :style => "color: black; margin-left: 28px; width: 200px;" %>
+	</div>
+	<div class="field_name width600">
+		<span><%= f.label :reference_year, '参考年份' %><em>*</em></span>
+		<%= f.text_field :reference_year, :class => "number required", :maxlength => "5" %>
+		<span style="margin-left: 10px">年 (E.g. 2009年)</span>
+	</div>
+	<div class="field_name width600" style="margin-left: 47px;">
+		<span><%= f.label :color, '色泽' %><em>*</em></span>
+		<%= f.text_field :color, :class => "text required", :maxlength => "32", :style => "color: black; width: 200px;" %>
+		<span style="margin-left: 10px">E.g. 深宝石红色</span>
+	</div>
+	<div class="field_name width600" style="margin-left: 47px;">
+		<span><%= f.label :odour, '香味' %><em>*</em></span>
+		<%= f.text_field :odour, :class => "text required", :maxlength => "35", :style => "color: black; width: 200px;" %>
+		<span style="margin-left: 10px">E.g. 辛香料</span>
+	</div>
+	<div class="field_name width600"  style="margin-left: 34px;">
+		<span><%= f.label :alcoholic, '酒精度' %><em>*</em></span>
+		<%= f.text_field :alcoholic, :class => "number required", :maxlength => "5" %>
+		<span style="margin-left: 10px">% (E.g. 13.5%)</span>
+	</div>
+	<div class="field_name width600"  style="margin-left: 47px;">
+		<span><%= f.label :capacity, '容量' %><em>*</em></span>
+		<%= f.text_field :capacity, :class => "number required", :maxlength => "4" %>
+		<span style="margin-left: 10px">ml (E.g. 750 ml)</span>
+	</div>
+	<div class="field_name width600"  style="margin-left: 47px;">
+		<span><%= f.label :score, '分数' %></span>
+		<%= f.text_field :score, :class => "number", :maxlength => "3", :style => "color: black; margin-left: 28px;" %>
+		<div id="score-explain" style="margin-left: 55px; clear: both; margin-top: 10px; padding: 5px;">
+			<ul>
+				<li><b style="color: green;">96-100</b>非凡的，品质卓越的，颜色为黄色；</li>
+				<li><b style="color: green;">90-95</b>突出的，颜色为紫红色；</li>
+				<li><b style="color: green;">80-89</b>高于平均水平的，颜色为红色；</li>
+				<li><b style="color: blue;">70-79</b>一般的，颜色为蓝色；</li>
+				<li><b style="color: blue;">60-69</b>代表低于平均水平，颜色为绿色；</li>
+				<li>低于<b style="color: red;">59</b>品质低劣的，颜色为黑色。</li>
+			</ul>
+		</div>
+	</div>
+	<div class="actions width600">
+		<% if @resource.id != nil %>
+			<%= f.submit "更新", :class => 'create_button', :id => 'resource_update_button'%>
+		<% else %>
+			<%= f.submit "创建", :class => 'create_button', :id => 'resource_create_button' %>
+		<% end %>
+	</div>
+	<div class="control_bar width600">
+		<%= link_to '所有宝贝', resources_path %>
+		<% if @resource.id != nil %>
+			<%= link_to '配额管理', [@resource,'quota'], :id => 'resource_quota_manager' %>
+			<%= link_to '图例管理', [@resource,'images'], :id => 'resource_images_manager' %>
+			<%= link_to '刷新', edit_resource_url(@resource) %>
+		<% end %>
+	</div>
+<% end %>
+
+
+
+
+

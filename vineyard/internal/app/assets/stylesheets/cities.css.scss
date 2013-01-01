@@ -1,0 +1,114 @@
+// Place all the styles related to the City controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+#city_register_form {
+	width: 360px;
+}
+
+#city_register_form span {
+	color: #333;
+	font-size: 14px;
+	float: left;
+	vertical-align: middle;
+	text-align: center;
+}
+
+#city_register_form .text {
+	border: 1px solid #CFCFCF;
+	float: left;
+	width: 254px;
+	height: 30px;
+	margin-left: 5px;
+	line-height: 30px;
+	border-radius: 3px;
+	padding-left: 8px;
+}
+
+#city_register_form .actions {
+	margin-left: 92px;
+	margin-top: 20px;
+	overflow: hidden;
+	zoom: 1;
+}
+
+.city_name {
+	margin-left: 20px;
+	overflow: hidden;
+	line-height: 30px;
+}
+
+.city_available {
+	margin-top: 10px;
+	margin-left: 20px;
+	overflow: hidden;
+	line-height: 30px;
+}
+
+.key_words {
+	font-size: 14px;
+	font-weight: bold;
+}
+
+.create_button {
+	background: url(nav_button_icon_v1.png) no-repeat 0 -280px;
+	display: block;
+	width: 47px;
+	height: 24px;
+	line-height: 24px;
+	text-align: center;
+	float: left;
+	color: white;
+	font-weight: bold;
+	margin-right: 7px;
+	border: 0;
+}
+
+.table_head {
+	padding: 5px;
+	background-color: gold;
+	line-height: 24px;
+	font-size: 20px;
+	font-weight: bolder;
+	color: darkOrchid;
+}	
+
+.table_body {
+	font-size: 12px;
+	line-height: 12px;
+}
+
+.table_foot {
+	padding: 5px;
+	background-color: aliceblue;
+	line-height: 24px;
+	font-size: 20px;
+	font-weight: bolder;
+	color: white;
+}
+
+.open {
+	color: green;
+	font-weight: bolder;
+}
+
+.close {
+	color: red;
+	font-weight: bolder;
+}
+
+.city_table td {
+	text-align: center;
+}
+
+.submit {
+	font-size: 14px;
+	font-weight: bold;
+	line-height: 16px;
+	background: #689200;
+	border-radius: 7px;
+	padding: 2px 8px 3px;
+	color: white;
+	border: 0px;
+}	
+
+

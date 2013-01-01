@@ -1,0 +1,37 @@
+<%= form_tag("/logins",:method => "post", :id=> "user_login_form") do %>
+	<% if @user.errors.any? %>
+		<div id="error_explanation">
+		<h2>共有<%= @user.errors.count %>错误，请按下面的提示修正先!!</h2>
+			<ul>
+				<% @user.errors.full_messages.each do |msg| %>
+					<li><img src="/assets/error_01.png"><%= msg %></li>
+				<% end %>
+			</ul>	
+		</div>
+	<% end %>
+	<p class="notice">
+	<% if flash[:notice] != nil %>
+		<img src="/assets/error_01.png">&nbsp;<%= flash[:notice] %>
+	<% end %>
+	<% if flash[:error] != nil %>
+		<img src="/assets/error_01.png">&nbsp;<%= flash[:error] %>
+	<% end %>
+	</p>
+	<div class="username width600">
+		<span><%= label_tag(:username,'用户名') %><em>*</em></span>
+		<%= text_field_tag(:username, @user.username, :class => "text required", :maxlength => "32", :style => "color: rgb(0, 0, 0);") %>
+	</div>
+	<div class="password width600">
+		<span><%= label_tag :password, :密码 %><em>*</em></span>
+		<%= password_field_tag :password, '', :class => "text required", :style => "color: rgb(0, 0, 0);"%>
+	</div>
+	<div class="actions width600">
+		<%= submit_tag "登陆", :class => 'create_button', :id => 'login_button'%>
+	</div>
+	<div class="control_bar width600">
+		<%= link_to "我是管理员", new_admin_url %>
+	</div>
+<% end %>
+
+
+

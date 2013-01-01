@@ -1,0 +1,42 @@
+<%= form_for @city do |f| %>
+	<% if @city.errors.any? %>
+		<div id="error_explanation">
+			<h2>共有<%= pluralize(@city.errors.count, "错误，请按下面的提示修正先！！") %> 
+			</h2>
+			<ul>
+				<% @city.errors.full_messages.each do |msg| %>
+					<li><img src="/assets/error_01.png"><%= msg %></li>
+				<% end %>
+			</ul>
+		</div>
+	<% end %>
+	<p class="notice">
+	<% if flash[:notice] != nil %>
+		<img src="/assets/error_01.png">&nbsp;<%= flash[:notice] %>
+	<% end %>
+	</p>
+	<div class="city_name">
+		<span><%= f.label :城市名称 %>:</span>
+		<%= f.text_field :name, :class => "text", :maxlength => "32", :style => "color: rgb(0, 0, 0);"%>
+	</div>
+	<div class="city_available">
+		<span><%= f.label :立即开发 %>:</span>
+		<%= f.radio_button(:available, true) %><%= f.label(:enable, "是的")%>
+		<%= f.radio_button(:available, false) %><%= f.label(:enable, "以后再说")%>
+	</div>
+
+	<div class="actions">
+		<% if @city.id != nil %>
+			<%= f.submit "更新", :class => 'create_button'%>
+		<% else %>
+			<%= f.submit "创建", :class => 'create_button'%>
+		<% end %>
+	</div>
+
+	<div class="control_bar">
+		<%= link_to '所有城市', cities_path%>
+	</div>
+<% end %>
+
+
+
