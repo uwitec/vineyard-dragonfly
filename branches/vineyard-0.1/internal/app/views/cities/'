@@ -1,0 +1,94 @@
+<div class="piece690">
+	<div class="piece_hd2"></div>
+	<div class="piece_bd2">	
+		<table class="resource-table">
+			<thead>
+				<tr class="col-name">
+					<th style="width: 10%;"></th>
+					<th style="width: 20%;">城市</th>
+					<th style="width: 30%;">状态</th>
+					<th style="width: 40%;">其它操作</th>
+				</tr>
+				<tr class="sep-row">
+					<td colspan="4"></td>
+				</tr>
+				<tr class="toolbar">
+					<td colspan="3">
+						<label>
+							<input type="checkbox" id="check_all_cities">全选
+							<a id="delete_checked_cities" class="toolbtn" href="##">批量删除</a>
+							<a id="open_checked_cities" class="toolbtn" href="##">批量开放</a>
+							<a id="close_checked_cities" class="toolbtn" href="##">批量关闭</a>
+							<%= link_to '开发新市场', new_city_path, :class => 'toolbtn'%>
+						</label>
+					</td>
+					<td>
+						<div class="paginator-top">
+							<div class="paginator-previous-grey g-u">
+								<span class="paginator-arrow paginator-arrow-left-grey"></span>
+							</div>
+							<a class="paginator-next g-u">下一页<span class="paginator-arrow paginator-arrow-right-orange"></span></a>
+						</div>
+					</td>
+				</tr>
+			</thead>
+			<% @cities.each do |city| %>
+			<tbody>
+				<tr class="sep-row">
+					<td colspan="4"></td>
+				</tr>
+				<tr class="order-hd">
+					<td colspan="7">
+						<span class="no">
+							<label>
+								<% if city.available %>
+									<input type='checkbox' name='city_check_box' class="open" value=<%= city.id%>>
+								<% else %>
+									<input type='checkbox' name='city_check_box' class="close" value=<%= city.id%>>
+								<% end %>
+								市场编号：
+								<span class="baobei-num"><%= city.id %></span>
+							</label>
+						</span>
+						<span class="create-time">
+							创建时间：<%= city.created_at %>
+						</span>
+					</td>
+				</tr>
+				<tr class="order-bd">
+						<td colspan="2">
+							<%= link_to "#{city.name}", city %>
+						</td>
+						<% if city.available %>
+							<td class="open">业务开发中</td>
+						<% else %>
+							<td class="close">业务已关闭</td>
+						<% end %>
+						<td>
+							<%= link_to '编辑', edit_city_url(city) %>
+							<% if city.available %>
+								<%= link_to '关闭', close_city_url(city), :style => 'color: red;'%>
+							<% else %>
+								<%= link_to '开发', open_city_url(city), :style => 'color: green;'%>
+							<% end %>
+							<a href="##" name=<%= city.id %> class="delete_city_link">删除</a>
+						</td>
+					</tr>
+				</tbody>
+			<% end %>
+			<tfoot>
+				<tr class="sep-row">
+					<td colspan="4"></td>
+				</tr>
+				<tr class="toolbar skin-gray">
+					<td colspan="4">
+						<%= link_to '开发新市场', new_city_path, :class => 'toolbtn'%>
+					</td>
+				</tr>
+			</tfoot>
+		</table>
+	</div>
+	<div class="piece_ft2"></div>
+</div>
+ 
+<%= javascript_include_tag "cities" %>

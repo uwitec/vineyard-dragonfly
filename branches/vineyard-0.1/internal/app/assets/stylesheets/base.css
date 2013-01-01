@@ -1,0 +1,82 @@
+.width600 {
+	width: 600px;
+}
+
+.field_name {
+	margin-top: 10px;
+	margin-left: 20px;
+	overflow: hidden;
+	line-height: 30px;
+}
+
+.field_name dl {
+	padding-bottom: 6px;
+	margin: 0;
+	padding: 0;
+	display: block;
+}
+
+.field_name dt {
+	float: left;
+	margin-top: 4px;
+}
+
+.field_name dd {
+	float: left;
+}
+
+.number {
+	border: 1px solid #CFCFCF;
+	float: left;
+	width: 60px;
+	height: 30px;
+	margin-left: 5px;
+	line-height: 30px;
+	border-radius: 3px;
+	padding-left: 8px;
+}
+
+.text {
+	border: 1px solid #CFCFCF;
+	float: left;
+	width: 254px;
+	height: 30px;
+	margin-left: 5px;
+	line-height: 30px;
+	border-radius: 3px;
+	padding-left: 8px;
+}
+
+.radius7 {
+	font-size: 14px;
+	font-weight: bold;
+	line-height: 16px;
+	background: #689200;
+	border-radius: 7px;
+	padding: 2px 8px 3px;
+	color: white !important;	
+}
+
+.ml10 {
+	margin-left: 10px;
+}
+
+.text-center {
+	text-align: center;
+}
+
+.form span {
+	color: #333;
+	font-size: 14px;
+	float: left;
+	vertical-align: middle;
+	text-align: center;
+}
+
+.form .actions {
+	margin-left: 92px;
+	margin-top: 20px;
+	overflow: hidden;
+	zoom: 1;
+}
+

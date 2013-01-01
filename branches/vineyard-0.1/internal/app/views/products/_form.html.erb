@@ -1,0 +1,27 @@
+<%= form_tag("/products", :method => "post", :id => "product_form", :class => "form") do %>
+	<p class="notice">
+	<% if flash[:notice] != nil %>
+		<img src="/assets/error_01.png">&nbsp;<%= flash[:notice] %>
+	<% end %>
+	</p>
+	<%= hidden_field_tag :rid %>
+	<div class="field_name">
+		<span><%= label_tag :name, '名称' %><em>*</em></span>
+		<%= text_field_tag :name, '', :class => "text required", :maxlength => "32", :style => "width: 200px; margin-left: 33px;" %>
+	</div>
+	<div class="field_name">
+		<span><%= label_tag :price, '单价' %><em>*</em></span>
+		<%= text_field_tag :price, '', :class => "number required", :maxlength => "10", :size => 10, :style => "width: 80px;" %>
+		<span style="margin-left: 10px;">￥</span>
+	</div>
+	<div class="field_name">
+		<span><%= label_tag :expiration, '有效期至' %><em>*</em></span>
+		<%= text_field_tag :expiration, '', :class => "text required", :size => 10, :style => "width: 100px;", :readyonly => true %>
+	</div>
+	<div class="actions">
+		<%= submit_tag "更新", :class => 'create_button', :id => 'create_product_button'%>
+	</div>
+<% end %>
+
+
+

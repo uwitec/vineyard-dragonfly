@@ -1,0 +1,23 @@
+<%= form_tag("quota", :method => "put", :id => "quota_edit_form") do %>
+	<p class="notice">
+	<% if flash[:notice] != nil %>
+		<img src="/assets/error_01.png">&nbsp;<%= flash[:notice] %>
+	<% end %>
+	</p>
+	<div class="open_cities">
+		<span>城市 :</span>
+		<label id="city_name"></label>
+	</div>
+	<div class="quantity" style="clear: both">
+		<span style="float: left;">数量 :</span>
+		<%= text_field_tag :edit_quantity, '', :class => "number", :maxlength => 5, :size => 5 ,:style => 'margin-left: 5px;'%>
+		<span>件</span>
+	</div>
+	<div class="actions" style="margin-top: 10px;">
+		<%= submit_tag "更新", :class => 'create_button', :id => 'edit_quota_button'%>
+		<%= submit_tag "删除", :class => 'create_button', :id => 'destroy_quota_button'%>
+	</div>
+<% end %>
+
+
+

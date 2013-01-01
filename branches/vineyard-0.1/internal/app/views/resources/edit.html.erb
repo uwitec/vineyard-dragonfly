@@ -1,0 +1,31 @@
+<div id="main_content" style="clear: both">
+	<div class="piece690" style="float:left;">
+		<div class="piece_hd2"></div>
+		<div class="piece_bd2">	
+			<div id="resource_register_form">
+				<%= render 'form' %>
+			</div>
+		</div>
+		<div class="piece_ft2"></div>
+	</div>
+
+	<div id="side_bar" style="float: left;">
+		<div class="piece300">
+			<div class="piece_hd"></div>
+			<div class="piece_bd">
+				<ul class="right_images_list_ul">
+				<% @images.each do |image| %>
+					<li id="image_item_li_<%= image.id %>">
+					<a href="javascript:destroyImage(<%=image.id%>);" class="right_images_item_remove"></a>
+					<%= image_tag image.photo.url, :width => "280", :height => "280" %>
+					</li>
+				<% end %>	
+				<ul>
+			</div>
+			<div class="piece_ft"></div>
+		</div>
+	</div>
+</div>
+
+<%= javascript_include_tag "resources" %>
+
