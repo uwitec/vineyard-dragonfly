@@ -1,33 +1,21 @@
 class ProductsController < ApplicationController
 	# GET /products/new
 	def new 
-		product = Product.joins("join products_resources on products.id = products_resources.product_id").where('products_resources.resource_id' => params[:rid]).limit(1)
-		logger.info product
+		@product = Product.new()
+		logger.info @product
 
 		respond_to do |format|
-			if product.length == 0  
-				product = [Product.new]
-			else 
-				expiration = product[0].expiration.strftime("%m/%d/%Y") unless product[0].expiration == nil
-			end
-			format.json { render json: [product[0], expiration]}
+			format.html # new.html.erb
 		end
 	end
 
 	# POST /products
 	def create
-		product = Product.new
-		product.price = params[:price].to_f
-		expiration = DateTime.strptime(params[:expiration],"%m/%d/%Y").to_date
-		product.expiration = expiration
-		product.name = params[:name]
-		product.save
-
-		resource = Resource.find(params[:rid])
-		product.resources<<resource
+		@product = Product.create(params[:product])
+		logger.info @product
 
 		respond_to do |format|
-			format.json { render json: product.id, status: :created }
+			format.json { render json: @product._id }
 		end
 	end
 	

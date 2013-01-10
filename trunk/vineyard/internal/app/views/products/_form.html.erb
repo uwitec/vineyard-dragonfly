@@ -1,27 +1,175 @@
-<%= form_tag("/products", :method => "post", :id => "product_form", :class => "form") do %>
+<%= form_for(@product, :method => "post", :html => {:id=> "product_form"}) do |f| %>
+	<% if @product.errors.any? %>
+		<div id="error_explanation">
+		<h2>共有<%= @product.errors.count %>错误，请按下面的提示修正先!!</h2>
+			<ul>
+				<% @product.errors.full_messages.each do |msg| %>
+					<li><img src="/assets/error_01.png"><%= msg %></li>
+				<% end %>
+			</ul>	
+		</div>
+	<% end %>
 	<p class="notice">
 	<% if flash[:notice] != nil %>
 		<img src="/assets/error_01.png">&nbsp;<%= flash[:notice] %>
 	<% end %>
 	</p>
-	<%= hidden_field_tag :rid %>
-	<div class="field_name">
-		<span><%= label_tag :name, '名称' %><em>*</em></span>
-		<%= text_field_tag :name, '', :class => "text required", :maxlength => "32", :style => "width: 200px; margin-left: 33px;" %>
+	<div class="field_name width600" style="margin-left: 47px">
+		<span><%= f.label :title, '名称' %><em>*</em></span>
+		<%= f.text_field :title, :class => "text required", :maxlength => "32"%>
 	</div>
-	<div class="field_name">
-		<span><%= label_tag :price, '单价' %><em>*</em></span>
-		<%= text_field_tag :price, '', :class => "number required", :maxlength => "10", :size => 10, :style => "width: 80px;" %>
-		<span style="margin-left: 10px;">￥</span>
+	<div class="field_name width600" style="margin-left: 47px">
+		<dl class="topitems">
+			<dt><%= f.label :category, '种类' %><em>*</em></dt>
+			<dd style="width: 400px">
+				<ul style="margin-left: 13px;">
+					<li id="red_wine" class="category">
+						<a href="#" >红葡萄酒</a>
+					</li>
+					<li id="white_wine" class="category">
+						<a href="#">白葡萄酒</a>
+					</li>
+				</ul>
+			</dd>
+		</dl>
+		<dl class="subitems">
+			<dt></dt>
+			<dd style="width: 400px">
+				<ul id="red_wine_sub_items" class="sub-wine-items" style="margin-left: 58px; display: none;">
+					<li class="sub_category">
+						<a href="#">干红</a>
+					</li>
+					<li class="sub_category">
+						<a href="#">半干红</a>
+					</li>
+					<li class="sub_category">
+						<a href="#">干甜红</a>
+					</li>
+					<li class="sub_category">
+						<a href="#" >甜红</a>
+					</li>
+					<li class="sub_category">
+						<a href="#">干甜搭</a>
+					</li>
+				</ul>
+				<ul id="white_wine_sub_items" class="sub-wine-items"  style="margin-left: 58px; display: none;">
+					<li class="sub_category">
+						<a href="###">干白</a>
+					</li>
+					<li class="sub_category">
+						<a href="#">半干白</a>
+					</li>
+					<li class="sub_category">
+						<a href="#">干甜白</a>
+					</li>
+					<li class="sub_category">
+						<a href="#">甜白</a>
+					</li>
+					<li class="sub_category">
+						<a href="#">贵腐酒</a>
+					</li>
+					<li class="sub_category">
+						<a href="#">干甜搭</a>
+					</li>
+				</ul>
+			</dd>
+		</dl>
+		<%= f.hidden_field :category %>
+		<%= f.hidden_field :sub_category %>
 	</div>
-	<div class="field_name">
-		<span><%= label_tag :expiration, '有效期至' %><em>*</em></span>
-		<%= text_field_tag :expiration, '', :class => "text required", :size => 10, :style => "width: 100px;", :readyonly => true %>
+	<div class="field_name width600" style="margin-left: 34px;">
+		<dl class="topitems">
+			<dt><%= f.label :orign_country, '原产国' %><em>*</em></dt>
+			<dd style="width: 400px">
+				<ul style="margin-left: 13px;">
+					<li id="french" class="contry">
+						<a href="#">法国</a>
+					</li>
+					<li id="italy" class="contry">
+						<a href="#">意大利</a>
+					</li>
+					<li id="australian" class="contry">
+						<a href="#">澳大利亚</a>
+					</li>
+					<li id="germany" class="contry">
+						<a href="#">德国</a>
+					</li>
+					<li id="america" class="contry">
+						<a href="#">美国</a>
+					</li>
+					<li id="spain" class="contry">
+						<a href="#">西班牙</a>
+					</li>
+					<li id="chile" class="contry">
+						<a href="#">智利</a>
+					</li>
+					<li id="new-zealand" class="contry">
+						<a href="#">新西兰</a>
+					</li>
+					<li id="argentina" class="contry">
+						<a href="#">阿根廷</a>
+					</li>
+					<li id="south-africa" class="contry">
+						<a href="#">南非</a>
+					</li>
+						<li id="austria" class="contry">
+						<a href="#">奥地利</a>
+					</li>
+					<li id="portugal" class="contry">
+						<a href="#">葡萄牙</a>
+					</li>
+					<li id="canada" class="contry">
+						<a href="#">加拿大</a>
+					</li>
+					<li id="hungary" class="contry">
+						<a href="#">匈牙利</a>
+					</li>
+					<li id="greece" class="contry">
+						<a href="#">希腊</a>
+					</li>
+				</ul>
+			</dd>
+		</dl>
+		<%= f.hidden_field :orign_country, :class => "text required" %>
 	</div>
-	<div class="actions">
-		<%= submit_tag "更新", :class => 'create_button', :id => 'create_product_button'%>
+	<div class="field_name width600" style="margin-left: 34px;">
+		<span><%= f.label :orign_area, '原产地' %></span>
+		<%= f.text_field :orign_area, :class => "text", :maxlength => "32", :style => "margin-left: 28px; width: 200px;" %>
+	</div>
+	<div class="field_name width600">
+		<span><%= f.label :reference_year, '参考年份' %><em>*</em></span>
+		<%= f.text_field :reference_year, :class => "number required", :maxlength => "5" %>
+		<span style="margin-left: 10px">年 (E.g. 2009年)</span>
+	</div>
+	<div class="field_name width600"  style="margin-left: 34px;">
+		<span><%= f.label :alcoholic, '酒精度' %><em>*</em></span>
+		<%= f.text_field :alcoholic, :class => "number required", :maxlength => "5" %>
+		<span style="margin-left: 10px">% (E.g. 13.5%)</span>
+	</div>
+	<div class="field_name width600"  style="margin-left: 47px;">
+		<span><%= f.label :capacity, '容量' %><em>*</em></span>
+		<%= f.text_field :capacity, :class => "number required", :maxlength => "4" %>
+		<span style="margin-left: 10px">ml (E.g. 750 ml)</span>
+	</div>
+	<div class="field_name width600"  style="margin-left: 47px;">
+		<span><%= f.label :price, '价格' %><em>*</em></span>
+		<%= f.text_field :price, :class => "number required", :maxlength => "4" %>
+		<span style="margin-left: 10px">￥</span>
+	</div>
+		<div class="field_name width600"  style="margin-left: 47px;">
+		<span><%= f.label :vender, '酒庄' %></span>
+		<%= f.text_field :vender, :class => "text", :maxlength => "32", :style => "margin-left: 28px; width: 200px;" %>
+	</div>
+	<div class="actions width600">
+			<%= f.submit "创建", :class => 'create_button', :id => 'product_create_button' %>
+	</div>
+	<div class="control_bar width600">
+		<%= link_to '所有宝贝', products_path %>
 	</div>
 <% end %>
+
+
+
 
 
 

@@ -135,49 +135,7 @@ $(".delete_resource_link").bind("click",function() {
 	}
 });
 
-$("#red_wine").bind("click",function() {		
-	clearWineContext();
-	$("#red_wine").toggleClass("tb-selected");	
-	if ( $("li[id='red_wine'][class='wine-type tb-selected']").length > 0 ) {
-		setUpRedWineContext();	
-	} else {
-		tearDownRedWineContext();	
-	}
-});
 
-function clearWineContext() {
-	$("#resource_category").val("");	
-	$("#resource_breed").val("");
-	$("li[class='sub-red-wine-item tb-selected']").each(function() {
-		$(this).removeClass("tb-selected");
-	});
-	$("li[class='sub-white-wine-item tb-selected']").each(function() {
-		$(this).removeClass("tb-selected");
-	});
-	$("li[class='grape-breed tb-selected']").each(function() {
-		$(this).removeClass("tb-selected");
-	});
-}
-
-function setUpRedWineContext() {
-	$("li[class='wine-type tb-selected'][id!='red_wine']").each(function() {
-		$(this).removeClass("tb-selected");
-	});
-	$(".sub-wine-items[id!='sub-red-wine-items']").each(function() {
-		$(this).hide();
-	});
-	$(".grape-breed-ul[id!='red-wine-grape-breed']").each(function() {
-		$(this).hide();
-	});
-	$("#sub-red-wine-items").show();
-	$("#red-wine-grape-breed").show();
-}
-
-function tearDownRedWineContext() {
-	$("#sub-red-wine-items").hide();
-	$("#red-wine-grape-breed").hide();
-	$("#no-wine-type-selected").show();
-}
 
 $("#white_wine").bind("click",function() {
 	clearWineContext();
@@ -244,10 +202,4 @@ $(".grape-breed").bind("click",function() {
 	$("#resource_breed").val(breed);
 });
 
-$(".contry").bind("click", function() {
-	$("li[class='contry tb-selected']").each(function() {
-		$(this).removeClass("tb-selected");
-	});
-	$(this).toggleClass("tb-selected");
-	$("#resource_orign_country").val($(this).find("a").text());
-});
+

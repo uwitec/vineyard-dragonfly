@@ -99,20 +99,19 @@
 	margin: 4px 0;
 }
 
-.right_images_list_ul {
+.images_list_ul {
 	list-style: none;
 }	
 
-.right_images_list_ul li {
+.images_list_ul li {
 	position: relative;
 	margin: 0;
 	padding: 0;
-	//border: 1px solid #DDD;
 	background-color: white;
 	box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
 }
 
-.right_images_item_remove {
+.images_list_ul a {
 	width: 12px;
 	height: 12px;
 	line-height: 12px;
@@ -121,5 +120,3 @@
 	top: -3px;
 	background: url(upimg.png) no-repeat 0 0;
 }
-
-
