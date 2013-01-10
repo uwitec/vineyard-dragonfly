@@ -1,8 +1,25 @@
-class Product < ActiveRecord::Base
-	has_and_belongs_to_many :resources
+class Product 
+	include Mongoid::Document
 
-	attr_accessible :advert
-	has_attached_file :advert,
-		:url => "/system/:class/:attachment/:id/:style.:extension",
-		:path => ":rails_root/public/system/:class/:attachment/:id/:style.extension"
+  field :title, type: String
+  field :category,type: String
+  field :sub_category,type: String
+  field :orign_country,type: String
+  field :orign_area,type: String
+  field :vender,type: String
+  #key :breed_ids, Array
+  #man :breed, :in => :breed_ids
+  field :reference_year,type: Integer
+  field :alcoholic,type: Float
+  field :capacity,type: Integer
+  field :price,type: Float
+	field :created_at, type: DateTime, default: -> {DateTime.now}
+	field :updated_at, type: DateTime, default: -> {DateTime.now}
+	field :enable, type: Boolean, default: true
+
+  has_many :images
+end
+
+Product.includes(:images).each do |product|
+	product.images.first
 end

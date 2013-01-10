@@ -13,36 +13,40 @@ Internal::Application.routes.draw do
 
   # Sample resource route (maps HTTP verbs to controller actions automatically):
   #   resources :products
-  resources :cities do
-	  member do
-		  get 'open'
-		  get 'close'
-		  get 'report'
-	  end
-	  collection do
-		  post 'batchopen'
-		  post 'batchclose'
-		  post 'delete'
-	  end
-  end
+  #resources :cities do
+	#  member do
+	#	  get 'open'
+	#	  get 'close'
+	#	  get 'report'
+	#  end
+	# collection do
+	#	  post 'batchopen'
+	#		post 'batchclose'
+	#	  post 'delete'
+	# end
+  #end
 
-  resources :resources do
-	  resources :quota 
-	  resources :images
-	  collection do
-		  post 'delete'
-	  end
-  end
+	resources :products do
+		resources :images
+	end
 
-  resources :products do
-	  collection do
-		  post 'delete'
-	  end
-  end
+  #resources :resources do
+	# resources :quota 
+	# resources :images
+	# collection do
+	#	  post 'delete'
+	# end
+  #end
+
+  #resources :products do
+	#  collection do
+	#	  post 'delete'
+	#  end
+  #end
   
-  resource :logins
+  #resource :logins
 
-  resource :users
+  #resource :users
 
   resource :admin
 

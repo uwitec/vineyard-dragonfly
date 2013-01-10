@@ -32,5 +32,5 @@ Internal::Application.configure do
   Rails.logger = Logger.new("log/development.log")
 
   # Add Paperclip Instance
-  Paperclip.options[:command_path] = "/usr/bin/"
+  # Paperclip.options[:command_path] = "/usr/bin/"
 end

@@ -1,0 +1,26 @@
+<div class="piece690">
+	<div class="piece_hd2"></div>
+	<div class="piece_bd2">
+		<div class="control_bar" style="margin-left: 0px;">
+			<a href="images/new">继续上传宝贝图片</a>
+		</div>	
+		<div>
+			<ul class="images_list_ul">
+			<% @images.each do |image| %>
+				<li style="width: 600px;">
+				<a href="##" name="<%= image.product_id %>::<%= image.id %>" class="image_destroy_link"></a>
+					<%= image_tag(image.upload.url, :width => "600px",:height => "400px") if image.upload? %>
+				</li>
+			<% end %>
+			</ul>
+		</div>
+		<div class="control_bar" style="margin-left: 0px;">
+			<a href="images/new">继续上传宝贝图片</a>
+		</div>
+	</div>
+	<div class="piece_ft2"></div>
+</div>
+
+<%= render "form_destroy" %>
+
+<%= javascript_include_tag "images" %>

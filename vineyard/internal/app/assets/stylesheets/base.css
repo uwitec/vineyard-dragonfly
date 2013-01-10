@@ -80,3 +80,21 @@
 	zoom: 1;
 }
 
+.yellow {
+	background-color: yellow;
+	color: red;
+}
+
+.green {
+	background-color: green;
+	color: white;
+}
+
+.tb-selected {
+	border: solid 1px red!important;
+}
+
+.ui-dialog .ui-dialog-titlebar-close, .ui-dialog .ui-dialog-titlebar-close span {
+	display: none!important;
+}
+

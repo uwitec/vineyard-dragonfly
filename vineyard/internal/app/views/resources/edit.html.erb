@@ -13,10 +13,10 @@
 		<div class="piece300">
 			<div class="piece_hd"></div>
 			<div class="piece_bd">
-				<ul class="right_images_list_ul">
+				<ul class="images_list_ul">
 				<% @images.each do |image| %>
-					<li id="image_item_li_<%= image.id %>">
-					<a href="javascript:destroyImage(<%=image.id%>);" class="right_images_item_remove"></a>
+					<li style="width: 610px;">
+					<a href="javascript:destroyImage(<%=image.id%>);"></a>
 					<%= image_tag image.photo.url, :width => "280", :height => "280" %>
 					</li>
 				<% end %>	

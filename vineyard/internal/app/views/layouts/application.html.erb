@@ -14,16 +14,23 @@
 			<h1 class="logo_detail">葡萄庄园 Vineyard</h1>
 		</div>
 		<div id="navigation">
-			<% if session[:admin_id] != nil %>
-				<ul class="navi_list fl">
-					<li>
-						<span class="login_info" style="margin-left: 10px;"><%=session[:admin_id] %></span>
-					</li>
-					<li>
-						<a class="import c" style="padding: 2px 8px 3px;" href="/alogout">退出</a>
-					</li>
-				</ul>
+			<ul class="navi_list fl">
+			<% if flash[:notice] != nil %>
+				<li style="color: white; font-weight: bold; padding-left: 10px;"><%= flash[:notice] %></li>
 			<% end %>
+			<% if session[:admin_id] != nil %>
+				<li>
+					<span class="login_info" style="margin-left: 10px;"><%=session[:admin_id] %></span>
+				</li>
+				<li>
+					<a class="import c" style="padding: 2px 8px 3px;" href="/alogout">退出</a>
+				</li>
+			<% else %>
+				<li>
+				<%= link_to "登陆", new_admin_url, :class => "import c", :style => "padding: 2px 8px 3px;"%>
+				</li>
+			<% end %>
+			</ul>
 		</div>
 		<div id="head_bottom"></div>
 	</div>
@@ -49,19 +56,11 @@
 						<span>管理庄园</span>
 						</li>
 						<li class="level2_title">
-							<a href="/resources">已收录的宝贝</a>
+							<a href="/products">已收录的宝贝</a>
 						</li>
 						<li class="level2_title">
-							<a href="/resources/new">添加宝贝</a>
+							<a href="/products/new">添加宝贝</a>
 						</li>
-						<li class="level2_title">
-							<a href="/products">已开发的产品</a>
-						</li>
-						<!--
-						<li class="level2_title">
-							<a href="/products/new">开发新产品</a>
-						</li>
-						-->
 					</ul>
 				</div>
 				<div class="piece_ft">

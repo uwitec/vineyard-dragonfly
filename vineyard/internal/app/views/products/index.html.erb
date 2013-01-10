@@ -5,25 +5,27 @@
 			<thead>
 				<tr class="col-name">
 					<th></th>
-					<th>产品</th>
-					<th>价格</th>
-					<th>有效期</th>
-					<th></th>
+					<th class="baobei">宝贝</th>
+					<th class="price">价格</th>
+					<th class="reference_year">参考年份</th>
+					<th class="alcoholic">酒精度</th>
+					<th class="capacity">容量</th>
+					<th class="vender">供应商</th>
+					<th class="operate">发布操作</th>
+					<th class="other">其它操作</th>
 				</tr>
 				<tr class="sep-row">
-					<td colspan="5"></td>
+					<td colspan="9"></td>
 				</tr>
 				<tr class="toolbar">
-					<td colspan="4">
+					<td colspan="7">
 						<label>
-							<input type="checkbox" id="check_all_products">
-							<a id="delete_checked_products" class="toolbtn" href="##">批量删除</a>
-							<%= form_tag("/products/delete", :method => "post", :id => "delete_checked_products_form" ) do %>
-								<%= hidden_field_tag(:ids) %>
-							<% end %>
+							<input type="checkbox" id="check_all_products">全选
+							<a id="delete_checked_products" class="toolbtn" href="##">删除</a>
+							<%= link_to '添加宝贝', new_product_path, :class => 'toolbtn'%>
 						</label>
 					</td>
-					<td>
+					<td colspan="2">
 						<div class="paginator-top">
 							<div class="paginator-previous-grey g-u">
 								<span class="paginator-arrow paginator-arrow-left-grey"></span>
@@ -36,14 +38,14 @@
 			<% @products.each do |product| %>
 			<tbody>
 				<tr class="sep-row">
-					<td colspan="5"></td>
+					<td colspan="9"></td>
 				</tr>
 				<tr class="order-hd">
-					<td colspan="5">
+					<td colspan="9">
 						<span class="no">
 							<label>
-								<input type='checkbox' name='product_check_box' value='<%= product.id %>'>
-								产品编号：
+								<input type='checkbox' name='product_check_box' value='<%= product.id %>'>	
+								宝贝编号:
 								<span class="baobei-num"><%= product.id %></span>
 							</label>
 						</span>
@@ -57,34 +59,48 @@
 				</tr>
 				<tr class="order-bd">
 					<td class="baobei" colspan="2">
-						<a href="/products/<%= product.id %>" target="_blank" title="查看产品详情" class="pic s80"><img alt="查看宝贝详情" class="s80"></img></a>
-						<div class="desc">
-							<%= link_to "#{product.name}", product, :class => "baobei-name" %>								<div class="spec">
-								<span></span>
+						<a href="/products/<%= product.id %>" target="_blank" title="查看宝贝详情" class="pic s80"><%= image_tag(product.images.first.upload.thumb.url) if product.images != nil && product.images.length >0 %></a>	
+						<div class="desc" style="padding: 10px 0;">
+							<%= link_to "#{product.title}", product, :class => "baobei-name", :id => "product_name_#{product.id}" %>	
+							<div class="spec">
+								<span>种类：<%=product.sub_category %>&nbsp;&nbsp;<%=product.category %></span><br>
+								<span>产地：<%=product.orign_country %>&nbsp;&nbsp;<%=product.orign_area %></span>
 							</div>
 						</div>
 					</td>
-					<td class="price">
+					<td class="price text-center">
 						<%= product.price %>
 					</td>
-					<td class="create-time">
-						<%= product.expiration_date %>
+					<td class="reference_year text-center">
+						<%= product.reference_year %>
 					</td>
-					<td>
+					<td class="alcoholic text-center">
+						<%= product.alcoholic %><span>%</span>
+					</td>
+					<td class="capacity text-center">
+						<%= product.capacity %><span>ml</span>
+					</td>
+					<td class="vender text-center">
+						<%= product.vender %>
+					</td>
+					<td class="operate text-center">
+						<a href="##" class="quota_dialog_button" name=<%= product.id %>>配额</a>
+						<%= link_to '图片', product_images_path(product) %>
+					</td>
+					<td class="other text-center">
 						<%= link_to '编辑', edit_product_url(product) %>
 						<a href="##" name=<%= product.id %> class="delete_product_link">删除</a>
-						<%= form_tag("/products/#{ product.id}", :method => "delete",:id => "delete_product_form_#{ product.id}") do %>
-						<% end %>
 					</td>
 				</tr>
-			</tbody>
+			</tbody>	
 			<% end %>
 			<tfoot>
 				<tr class="sep-row">
-					<td colspan="5"></td>
+					<td colspan="9"></td>
 				</tr>
 				<tr class="toolbar skin-gray">
-					<td colspan="5">
+					<td colspan="9">
+						<%= link_to '添加宝贝', new_product_path, :class => 'toolbtn'%>
 					</td>
 				</tr>
 			</tfoot>
@@ -92,5 +108,13 @@
 	</div>
 	<div class="piece_ft1"></div>
 </div>
- 
+<!-- delete multiple products form -->
+<%= form_tag("/products/delete", :method => "post", :id => "delete_checked_products_form" ) do %>
+	<%= hidden_field_tag(:ids) %>
+<% end %>
+<!-- delete single product form -->
+<%= form_tag("/products/", :method => "delete",:id => "delete_product_form") do %>
+<% end %>
+
 <%= javascript_include_tag "products" %>
+<%= javascript_include_tag "quota" %>

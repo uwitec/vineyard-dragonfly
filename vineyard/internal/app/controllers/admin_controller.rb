@@ -12,7 +12,7 @@ class AdminController < ApplicationController
 
 	def destroy
 		session[:admin_id] = nil
-		redirect_to new_logins_url , :notice => "Admin has successfully logged out"
+		redirect_to root_url, :notice => "Admin has successfully logged out"
 	end
 
 	private 

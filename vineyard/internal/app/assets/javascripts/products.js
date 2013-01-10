@@ -4,8 +4,8 @@
 
 $(document).ready(function() {
 	$('#product_form').validate();
-	$("#product_eidt_form").validate();
 	$('#product_form').ajaxForm();
+	/*$("#product_eidt_form").validate();
 	$("#product_eidt_form").ajaxForm();
 	$("#expiration").datepicker({
 		showOn: "button",
@@ -26,7 +26,7 @@ $(document).ready(function() {
 		changeMonth: true,
 		changeYear: true,
 		dateFormat: "mm/dd/yy"
-	});
+	});*/
 });
 
 $("#check_all_products").bind("click", function() {
@@ -128,7 +128,8 @@ $("#product_form").submit(function() {
 	if ( $("#product_form").valid() ) {
 		var options = {
 			dataType: "json",
-			success: createProductSuccess
+			success: createProductSuccess,
+			async: false
 		}
 		$('#product_form').ajaxSubmit(options);
 	}
@@ -137,7 +138,13 @@ $("#product_form").submit(function() {
 
 function createProductSuccess(json) {
 	if ( json != null ) {
-		$("#product_dialog").dialog("destroy");
+		var url = "/products/" + json + "/images";
+		$("#upload_images_link").attr("href",url);
+		$("#next_action").dialog({
+			modal:true,
+			resizable:false, 
+			width:'420px'
+		});
 	}
 }
 
@@ -178,3 +185,58 @@ function destroyProductSuccess(json) {
 	}
 }
 
+//merger from original resource.js
+$(".category").bind("click",function() {	
+	var id = $(this).attr("id");
+	clearContext(id);
+	$(this).toggleClass("tb-selected");
+	var selectedCategory = $("[class='category tb-selected']");
+	if ( selectedCategory.length > 0 ) {
+		setUpContext(id);	
+		$("#product_category").attr("value",selectedCategory.find("a").text());	
+	} else {
+		tearDownContext(id);	
+	}
+});
+
+function clearContext(id) {
+	$("#product_category").val("");	
+	$("#product_sub_category").val("");
+	$("li[class='sub_category tb-selected']").each(function() {
+		$(this).removeClass("tb-selected");
+	});
+	var selector = "li[class='category tb-selected'][id!='" + id + "']";
+	$(selector).each(function() {
+		$(this).removeClass("tb-selected");
+	});
+}
+
+function setUpContext(id) {
+	selector = ".sub-wine-items[id!='" + id + "_sub_items']";
+	$(selector).each(function() {
+		$(this).hide();
+	});
+	selector = "#" + id + "_sub_items";
+	$(selector).show();
+}
+
+function tearDownContext(id) {
+	var selector = "#" + id + "_sub_items";
+	$(selector).hide();
+}
+
+$(".sub_category").bind("click",function() {
+	$("li[class='sub_category tb-selected']").each(function() {
+		$(this).removeClass("tb-selected");
+	});
+	$(this).toggleClass("tb-selected");
+	$("#product_sub_category").val($(this).find("a").text());
+});
+
+$(".contry").bind("click", function() {
+	$("li[class='contry tb-selected']").each(function() {
+		$(this).removeClass("tb-selected");
+	});
+	$(this).toggleClass("tb-selected");
+	$("#product_orign_country").val($(this).find("a").text());
+});

@@ -1,23 +1,25 @@
-<%= form_tag("images", :method => "post", :id => "images_form", :multipart => true) do %>
+<%= form_for([@product,@product.images.build], :html => {:method => "post", :id => "images_form", :multipart => true}) do |f| %>
 	<p class="notice">
 	<% if flash[:notice] != nil %>
 		<img src="/assets/error_01.png">&nbsp;<%= flash[:notice] %>
 	<% end %>
 	</p>
 	<div id="images_uploader">
-		<input multiple="multiple" accept="image/*" type="file" name="photo" id="photo" value="上传图片" class="file_uploader_button">
+		<%= f.file_field :upload, :class => 'file_uploader_button'%>
+		<%= f.hidden_field :upload_cache %>
 		<ul class="ui-uploader-thumbImages ui-uploader-sorter" id="uploader_images_list"></ul>
 		<ul id="ui-uploader-inProgress-hidden" style="display: none;">
 			<li class="ui-uploader-inProgress">
-				<a href="###" class="ui-uploader-close"></a>
 				<div class="ui-uploader-content">
 					<span class="ui-uploader-progress"></span>
-					<img width="80" height="80">
+					<img width="80" height="80" style="display: none">
 				</div>
 				<div class="ui-uploader-bar">
+					<!--
 					<a href="###" class="ui-uploader-sorter pull-right">&nbsp;</a>
 					<a href="###" class="ui-uploader-sorter pull-left">&nbsp;</a>
 					<a href="###" class="ui-uploader-status">封面</a>
+					-->
 				</div>
 			</li>
 		</ul>
