@@ -1,6 +1,9 @@
 source 'http://rubygems.org'
 
 gem 'rails', '3.1.1'
+# added according to the things to know
+# http://support.cloudfoundry.com/entries/20019747-ruby-and-cloud-foundry-things-to-know
+gem 'thin'
 
 # Bundle edge Rails instead:
 # gem 'rails',     :git => 'git://github.com/rails/rails.git'
@@ -10,9 +13,13 @@ gem 'carrierwave'
 gem 'carrierwave-mongoid','~> 0.1.1', :require => "carrierwave/mongoid"
 gem "rmagick", "~> 2.13.1"
 gem "rack", "= 1.3.6"
-#group :development do
-#	gem 'sqlite3'
-#end
+gem 'execjs'
+
+group :development do
+	#gem 'sqlite3'
+# To use debugger
+	gem 'ruby-debug19', :require => 'ruby-debug'
+end
 
 #group :production do
 #	gem 'mysql2'
@@ -40,9 +47,6 @@ gem 'cloudfoundry-jquery-rails'
 
 # Deploy with Capistrano
 # gem 'capistrano'
-
-# To use debugger
-gem 'ruby-debug19', :require => 'ruby-debug'
 
 group :test do
   # Pretty printed test output
