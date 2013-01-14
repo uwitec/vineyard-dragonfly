@@ -1,2 +1,3 @@
-class User < ActiveRecord::Base
+class User
+	include Mongoid::Document
 end

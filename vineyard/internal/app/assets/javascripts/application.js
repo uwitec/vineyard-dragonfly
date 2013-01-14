@@ -5,4 +5,15 @@
 // the compiled file.
 //
 //= require jquery
-//= require jquery_ujs
+//= require jquery.validate.min
+//= require jquery.form
+//= require jquery-ui-1.8.22.custom.min
+//= require admin
+//= require cities
+//= require home
+//= require images
+//= require logins
+//= require products
+//= require quota
+//= require resources
+

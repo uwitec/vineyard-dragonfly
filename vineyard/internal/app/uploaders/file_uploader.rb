@@ -7,6 +7,15 @@ class FileUploader < CarrierWave::Uploader::Base
 	include CarrierWave::RMagick
 
 	process :set_content_type
+
+	process :minify
+
+	def minify
+		manipulate! do |img|
+			img = img.minify
+			img.resize_to_fit!(600,400)
+		end
+	end
 	
 	# Default large version
 	process :resize_to_fit => [600, 400]

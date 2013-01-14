@@ -20,6 +20,6 @@ class Product
   has_many :images
 end
 
-Product.includes(:images).each do |product|
-	product.images.first
-end
+#Product.includes(:images).each do |product|
+#	product.images.first
+#end
