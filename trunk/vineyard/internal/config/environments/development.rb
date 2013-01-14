@@ -28,9 +28,9 @@ Internal::Application.configure do
   # Expands the lines which load the assets
   config.assets.debug = true
 
+	config.serve_static_assets = true
+
   # Add Logger Instance 
   Rails.logger = Logger.new("log/development.log")
 
-  # Add Paperclip Instance
-  # Paperclip.options[:command_path] = "/usr/bin/"
 end
