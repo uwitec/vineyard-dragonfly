@@ -48,7 +48,8 @@ Internal::Application.routes.draw do
 
   #resource :users
 
-  resource :admin
+  resource :admin do
+	end
 
   # Sample resource route with options:
   #   resources :products do
