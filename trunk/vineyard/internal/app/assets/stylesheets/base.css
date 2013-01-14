@@ -25,6 +25,10 @@
 	float: left;
 }
 
+.field_name span {
+	float: left;
+}
+
 .number {
 	border: 1px solid #CFCFCF;
 	float: left;

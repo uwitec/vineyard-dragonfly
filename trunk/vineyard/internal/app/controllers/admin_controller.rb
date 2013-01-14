@@ -14,7 +14,7 @@ class AdminController < ApplicationController
 		session[:admin_id] = nil
 		redirect_to root_url, :notice => "Admin has successfully logged out"
 	end
-
+	
 	private 
 
 	def authenticate

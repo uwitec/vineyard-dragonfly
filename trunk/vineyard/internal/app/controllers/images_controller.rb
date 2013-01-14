@@ -2,13 +2,11 @@ class ImagesController < ApplicationController
 	# GET /products/:id/images
 	def index
 		count = Image.where(product_id: params[:product_id]).count
-		logger.info count
 		respond_to do |format|
 			if count == 0 
 				format.html {redirect_to action: 'new'}
 			else
 				@images = Image.where(product_id: params[:product_id])
-				logger.info @images
 				format.html # index.html.erb
 			end
 		end
@@ -25,7 +23,8 @@ class ImagesController < ApplicationController
 
 	# POST /products/:id/images
 	def create
-		@image = Image.new(:product_id => params[:product_id])
+		@image = Image.create
+		@image.product_id = params[:product_id]
 		@image.upload = params[:image][:upload]
 		@image.save!
 

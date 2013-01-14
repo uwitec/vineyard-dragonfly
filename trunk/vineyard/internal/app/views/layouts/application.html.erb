@@ -3,10 +3,7 @@
 <head>
   <title>葡萄庄园（管理端）</title>
   <%= stylesheet_link_tag    "application" %>
-  <%= javascript_include_tag "application" %>
-  <%= javascript_include_tag "jquery.form" %>
-  <%= javascript_include_tag "jquery.validate.min" %>
-  <%= javascript_include_tag "jquery-ui-1.8.22.custom.min" %>
+	<%= csrf_meta_tags %>
 </head>
 <body>
 <div id="head_wrap">
@@ -60,6 +57,13 @@
 						</li>
 						<li class="level2_title">
 							<a href="/products/new">添加宝贝</a>
+						</li>
+					</ul>
+					<ul class="vertical">
+						<li class="level1_title">
+						<span>安全中心</span>
+						</li>
+						<li class="level2_title">
 						</li>
 					</ul>
 				</div>
