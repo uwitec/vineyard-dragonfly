@@ -27,6 +27,9 @@ Internal::Application.routes.draw do
   #end
 
 	resources :products do
+		collection do
+			post 'delete'
+		end
 		resources :images
 	end
 
