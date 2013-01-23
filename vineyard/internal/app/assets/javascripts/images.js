@@ -19,6 +19,9 @@ function openImagesDialog(json) {
 	}
 }
 */
+$(document).ready(function() {
+	$("#image_destroy_form").ajaxForm();
+});
 
 $("#image_upload").bind("change",function() {
 	$.each(this.files,function(i) {
@@ -50,11 +53,38 @@ function uploadImageSuccess(json) {
 	var image = $("#uploader_images_list img").last();
 	image.attr("src",json.url);
 	image.show();
+	var link = $("#uploader_images_list a").last();
+	link.attr("name",json.product_id + "::" + json.id);
+	link.bind("click",function() {
+		var array = $(this).attr("name").split("::");
+		var url = "/products/" + array[0] + "/images/" + array[1];
+		$("#image_destroy_form").attr("action",url);
+		$(this).parent().parent().remove();
+		var options = {
+			dataType: 'json',
+			success: destroyImageSuccess
+		}
+		$("#image_destroy_form").ajaxSubmit(options);
+		return false;
+	});
+	link.show();
 }
 
 $(".image_destroy_link").bind("click",function() {
 	var array = $(this).attr("name").split("::");
 	var url = "/products/" + array[0] + "/images/" + array[1];
 	$("#image_destroy_form").attr("action",url);
-	$("#image_destroy_form").submit();
+	$(this).parent().parent().remove();
+	var options = {
+		dataType: 'json',
+		success: destroyImageSuccess
+	}
+	$("#image_destroy_form").ajaxSubmit(options);
+	return false;
 });
+
+function destroyImageSuccess(json) {
+	if ( json.result == 0 ) {
+		// destroy image succeed
+	}
+}

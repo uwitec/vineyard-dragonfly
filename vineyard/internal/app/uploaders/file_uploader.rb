@@ -13,20 +13,24 @@ class FileUploader < CarrierWave::Uploader::Base
 	def minify
 		manipulate! do |img|
 			img = img.minify
-			img.resize_to_fit!(600,400)
+			img.resize!(330,540)
 		end
 	end
 	
-	# Default large version
-	process :resize_to_fit => [600, 400]
+	# original fit size
+	#process :resize_to_fit => [330, 540]
 
 	version :medium do
-		process :resize_to_fill => [280,280]
+		process :resize_to_fill => [220,360]
 	end
 
-	version :thumb, :from_version => :medium do
-		process :resize_to_fill => [80,80]
+	version :thumb do
+		process :resize_to_fill => [110,180]
 	end
+
+	#version :thumb, :from_version => :medium do
+	#	process :resize_to_fill => [55,90]
+	#end
 
   # Include RMagick or MiniMagick support:
   # include CarrierWave::RMagick

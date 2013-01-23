@@ -5,28 +5,18 @@
 $(document).ready(function() {
 	$('#product_form').validate();
 	$('#product_form').ajaxForm();
-	/*$("#product_eidt_form").validate();
-	$("#product_eidt_form").ajaxForm();
-	$("#expiration").datepicker({
-		showOn: "button",
-		buttonImage: "/assets/calendar.gif",
-		buttonImageOnly: true,
-		minDate: 0,
-		maxDate: "+5Y",
-		changeMonth: true,
-		changeYear: true,
-		dateFormat: "mm/dd/yy"
+	$('#product_edit_form').validate();
+	$('.jqzoom').jqzoom({
+		zoomType: 'reverse',
+		lens:true,
+		preloadImages: false,
+		alwaysOn:false,
+		zoomWidth: 220,
+		zoomHeight: 360
+	});	
+	$(".lazy").lazyload({
+		effect: "fadeIn"
 	});
-	$("#edit_expiration").datepicker({
-		showOn: "button",
-		buttonImage: "/assets/calendar.gif",
-		buttonImageOnly: true,
-		minDate: 0,
-		maxDate: "+5Y",
-		changeMonth: true,
-		changeYear: true,
-		dateFormat: "mm/dd/yy"
-	});*/
 });
 
 $("#check_all_products").bind("click", function() {
@@ -88,11 +78,13 @@ $("#delete_checked_products").bind("click",function() {
 
 $(".delete_product_link").bind("click",function() {
 	if ( confirm("亲，你确定要彻底删除此产品吗？")) {
-		var id = "#delete_product_form_" + this.name ;
-		$(id).submit();
+		var id = $(this).attr("name");
+		$("#delete_product_form").attr("action","/products/" + id);
+		$("#delete_product_form").submit();
 	}
 });
 
+/*
 $(".product_dialog_button").bind("click",function() {
 	var url = $("#product_form").attr("action") + "/new" ;
 	var rid = $(this).attr("name");
@@ -122,7 +114,7 @@ function openProductDialog(json,rid) {
 			width:'420px'
 		});	
 	}
-}
+}*/
 
 $("#product_form").submit(function() {
 	if ( $("#product_form").valid() ) {
@@ -138,7 +130,7 @@ $("#product_form").submit(function() {
 
 function createProductSuccess(json) {
 	if ( json != null ) {
-		var url = "/products/" + json + "/images";
+		var url = "/products/" + json.id + "/images";
 		$("#upload_images_link").attr("href",url);
 		$("#next_action").dialog({
 			modal:true,
@@ -148,6 +140,7 @@ function createProductSuccess(json) {
 	}
 }
 
+/*
 $("#product_eidt_form").submit(function() {
 	if ( $("#product_eidt_form").valid() ) {
 		var options = {
@@ -165,7 +158,9 @@ function updateProductSuccess(json) {
 		$("#product_edit_dialog").dialog("destroy");
 	}
 }
+*/
 
+/*
 $("#destroy_product_button").bind("click",function() {
 	if ( confirm("亲，你确定要彻底删除此产品吗？")) {
 		$("#product_destroy_form").attr("action",$("#product_eidt_form").attr("action"))
@@ -183,20 +178,15 @@ function destroyProductSuccess(json) {
 	if ( json == 0 ) {
 		$("#product_edit_dialog").dialog("destroy");
 	}
-}
+}*/
 
 //merger from original resource.js
 $(".category").bind("click",function() {	
 	var id = $(this).attr("id");
 	clearContext(id);
 	$(this).toggleClass("tb-selected");
-	var selectedCategory = $("[class='category tb-selected']");
-	if ( selectedCategory.length > 0 ) {
-		setUpContext(id);	
-		$("#product_category").attr("value",selectedCategory.find("a").text());	
-	} else {
-		tearDownContext(id);	
-	}
+	setUpContext(id);	
+	$("#product_category").attr("value",$(this).find("a").text());	
 });
 
 function clearContext(id) {
@@ -205,8 +195,7 @@ function clearContext(id) {
 	$("li[class='sub_category tb-selected']").each(function() {
 		$(this).removeClass("tb-selected");
 	});
-	var selector = "li[class='category tb-selected'][id!='" + id + "']";
-	$(selector).each(function() {
+	$("li[class='category tb-selected']").each(function() {
 		$(this).removeClass("tb-selected");
 	});
 }
@@ -218,11 +207,6 @@ function setUpContext(id) {
 	});
 	selector = "#" + id + "_sub_items";
 	$(selector).show();
-}
-
-function tearDownContext(id) {
-	var selector = "#" + id + "_sub_items";
-	$(selector).hide();
 }
 
 $(".sub_category").bind("click",function() {

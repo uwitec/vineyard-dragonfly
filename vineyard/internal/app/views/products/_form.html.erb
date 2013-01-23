@@ -1,4 +1,4 @@
-<%= form_for(@product, :method => "post", :html => {:id=> "product_form"}) do |f| %>
+<%= form_for(@product, :method => "post", :html => {:id=> "product_form", :class => "form"}) do |f| %>
 	<% if @product.errors.any? %>
 		<div id="error_explanation">
 		<h2>共有<%= @product.errors.count %>错误，请按下面的提示修正先!!</h2>

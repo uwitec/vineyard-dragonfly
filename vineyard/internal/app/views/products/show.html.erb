@@ -1,8 +1,50 @@
-<div class="piece690">
-	<div class="piece_hd2"></div>
-	<div class="piece_bd2">	
+<div class="piece960">
+	<div class="piece_hd1"></div>
+	<div class="piece_bd1">	
+		<div>
+			<a>葡萄酒</a>＞ 
+			<%= link_to @product.category, "##" %>＞
+			<%= link_to @product.sub_category, "##" %>＞
+			<strong><%= @product.title %></strong>
+		</div>
+		<div class="promotion clearfix">
+			<div id="large_image_box">
+				<a href="<%= @product.images.master.upload.url if @product.images.master && @product.images.master.upload? %>" class="jqzoom"><div class="image_box medium fl"><%= image_tag(@product.images.master.upload.medium.url) if @product.images.master && @product.images.master.upload? %></div></a>
+			</div>
+			<div class="promotion_details">
+				<div>
+					<h1><%=@product.title %></h1>
+					<ul style="padding-top: 5px">
+						<li>价格：<%= @product.price %> ￥</li>
+						<li>参考年份：<%= @product.reference_year %> 年</li>
+						<li>容量：<%= @product.capacity %> ml</li>
+						<li>酒精度：<%= @product.alcoholic %> %</li>
+						<li>原产国：<%= @product.orign_country %></li>
+						<li>原产地：<%= @product.orign_area %></li>
+						<li>供应商：<%= @product.vender %></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<div class="clear"></div>
+		<div class="images_list">
+			<ul>
+				<% @product.images.slaver.each do |image| %>
+					<li>
+						<div class="image_box original fl">
+							<%= image_tag("grey.gif","data-original" => image.upload.url, :class => "original lazy") if image.upload? %>
+						</div>
+					</li>
+				<% end %>
+			</ul>
+		</div>
+		<div class="clear"></div>
+		<div class="control_bar width600" style="margin-left: 0;">
+			<%= link_to '所有宝贝', products_path %>
+			<%= link_to '编辑宝贝', edit_product_path(@product) %>
+		</div>
 	</div>
-	<div class="piece_ft2"></div>
+	<div class="piece_ft1"></div>
 </div>
 
 <%= javascript_include_tag "application" %>

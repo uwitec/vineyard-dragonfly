@@ -17,9 +17,13 @@ class Product
 	field :updated_at, type: DateTime, default: -> {DateTime.now}
 	field :enable, type: Boolean, default: true
 
-  has_many :images
-end
+  has_many :images do
+		def master
+			where(is_master: true).first
+		end
+		def slaver
+			where(is_master: false)
+		end
+	end
 
-#Product.includes(:images).each do |product|
-#	product.images.first
-#end
+end

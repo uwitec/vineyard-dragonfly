@@ -4,6 +4,7 @@
 // Place all the styles related to the Resources controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+/***CSS for index page*/
 .resource-table {
 	width: 99%;
 	border-collapse: collapse;
@@ -211,5 +212,21 @@
 	display: block;
 }
 
+/***CSS for show page*/
+#large_image_box {
+	
+}
 
+.promotion {
+	margin-top: 10px;
+}
+
+.promotion_details {
+	float: left;
+	margin-left: 10px;
+}
+
+.promotion_details ul li {
+	padding: 5px 0px;
+}
 

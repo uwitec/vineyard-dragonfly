@@ -1,4 +1,4 @@
-<%= form_for([@product,@product.images.build], :html => {:method => "post", :id => "images_form", :multipart => true}) do |f| %>
+<%= form_for([@product,Image.new], :html => {:method => "post", :id => "images_form", :multipart => true}) do |f| %>
 	<p class="notice">
 	<% if flash[:notice] != nil %>
 		<img src="/assets/error_01.png">&nbsp;<%= flash[:notice] %>
@@ -11,15 +11,9 @@
 		<ul id="ui-uploader-inProgress-hidden" style="display: none;">
 			<li class="ui-uploader-inProgress">
 				<div class="ui-uploader-content">
-					<span class="ui-uploader-progress"></span>
-					<img width="80" height="80" style="display: none">
-				</div>
-				<div class="ui-uploader-bar">
-					<!--
-					<a href="###" class="ui-uploader-sorter pull-right">&nbsp;</a>
-					<a href="###" class="ui-uploader-sorter pull-left">&nbsp;</a>
-					<a href="###" class="ui-uploader-status">封面</a>
-					-->
+					<span class="ui-uploader-progress thumb"></span>
+					<a href="##" name="" class="image_destroy_link ui-uploader-close" style="display: none"></a>
+					<img class="thumb" style="display: none">
 				</div>
 			</li>
 		</ul>
