@@ -59,7 +59,7 @@
 				</tr>
 				<tr class="order-bd">
 					<td class="baobei" colspan="2">
-						<a href="/products/<%= product.id %>" target="_blank" title="查看宝贝详情" class="pic s80"><%= image_tag(product.images.first.upload.thumb.url) if product.images != nil && product.images.length >0 %></a>	
+						<a href="/products/<%= product.id %>" target="_blank" title="查看宝贝详情"><div class="image_box thumb fl"><%= image_tag("grey.gif","data-original" => product.images.master.upload.thumb.url,:class => "lazy thumb") if product.images.master != nil && product.images.master.upload? %></div></a>	
 						<div class="desc" style="padding: 10px 0;">
 							<%= link_to "#{product.title}", product, :class => "baobei-name", :id => "product_name_#{product.id}" %>	
 							<div class="spec">
@@ -117,3 +117,4 @@
 <% end %>
 
 <%= javascript_include_tag "application" %>
+

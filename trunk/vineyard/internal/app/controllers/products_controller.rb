@@ -12,10 +12,9 @@ class ProductsController < ApplicationController
 	# POST /products
 	def create
 		@product = Product.create(params[:product])
-		logger.info @product
 
 		respond_to do |format|
-			format.json { render json: @product._id }
+			format.json { render json: {:id => @product._id}}
 		end
 	end
 	
@@ -31,7 +30,7 @@ class ProductsController < ApplicationController
 	# GET /products/:id
 	def show
 		@product = Product.find(params[:id])
-
+		
 		respond_to do |format|
 			format.html #show.html.erb
 		end
@@ -39,33 +38,32 @@ class ProductsController < ApplicationController
 
 	# GET /products/:id/edit
 	def edit
-		product = Product.find(params[:id])
+		@product = Product.find(params[:id])
 		
 		respond_to do |format|
-			format.json { render json: product } #edit.html.erb
+			format.html #edit.html.erb
+			format.json { render json: @product } #edit.html.erb
 		end
 	end
 
 	# PUT /products/:id
 	def update
-		product = Product.find(params[:id])
+		@product = Product.find(params[:id])
+		@product.update_attributes(params[:product])
 
 		respond_to do |format|
-			product.name = params[:edit_name]
-			product.price = params[:edit_price]
-			expiration = DateTime.strptime(params[:edit_expiration],"%m/%d/%Y").to_date
-			product.expiration = expiration
-			product.save
-
-			format.json { render json: product.id }
+			format.html { render action: "show"}	
+			format.json { render json: @product.id }
 		end
 	end
 
 	# DELETE /products/:id
 	def destroy
 		@product = Product.find(params[:id])
-		@product.resources.clear
-		@product.advert.destroy
+		@product.images.each do |image|
+			image.remove_upload! unless image == nil
+			image.destroy unless image == nil
+		end
 		@product.destroy
 
 		respond_to do |format|
@@ -79,14 +77,16 @@ class ProductsController < ApplicationController
 		ids = params[:ids]
 		ids.split(',').each { |id|
 			product = Product.find(id)
-			product.resources.clear
-			product.advert.destroy
+			product.images.each do |image|
+				image.remove_upload! unless image == nil
+				image.destroy unless image == nil
+			end
 			product.destroy
 		}
 
 		respond_to do |format|
 			format.html { redirect_to products_path }
-			fromat.json { render json: 0 }
+			format.json { render json: 0 }
 		end 
 	end
 

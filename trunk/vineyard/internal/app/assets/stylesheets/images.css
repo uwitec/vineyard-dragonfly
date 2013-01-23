@@ -1,6 +1,6 @@
-// Place all the styles related to the Images controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+/* Place all the styles related to the Images controller here.
+ They will automatically be included in application.css.
+ You can use Sass (SCSS) here: http://sass-lang.com/ */
 .file_uploader_button {
 	font-size: 14px;
 	font-weight: bold;
@@ -28,8 +28,26 @@
 }
 
 .ui-uploader-sorter {
-	background: url(upimg.png);
+	background: url(upimg.png) ;
 	background-repeat: no-repeat;
+}
+
+.pull-right {
+	float: right;
+	margin-top: 4px;
+  margin-bottom: 4px;
+  width: 12px;
+  height: 12px;
+	background-position: -12px -26px;
+}
+
+.pull-left {
+	float: left;
+	margin-top: 4px;
+  margin-bottom: 4px;
+  width: 12px;
+  height: 12px;
+	background-position: 0 -26px;
 }
 
 .ui-uploader-close {
@@ -44,7 +62,8 @@
 
 .ui-uploader-progress, .ui-uploader-error, .ui-uploader-description {
 	display: block;
-	line-height: 60px;
+	/*equal to .thumb height*/
+	line-height: 180px;
 	text-align: center;
 }
 
@@ -53,13 +72,17 @@
 	font-size: 8px;
 	margin: 0;
 	padding: 0;
-	width: 80px;
-	height: 80px;
-	background-position: 23.5px 13.5px;
+	/* equal to .thumb width */
+	width: 110px;
+	/* equal to .thumb height */
+	height: 180px;
+	/* equal to .thumb (width - 33)/2
+		 and (height - 33)/2 */
+	background-position: 38.5px 73.5px;
 }
 
 .ui-uploader-bar {
-	width: 80px;
+	width: 100%;
 	background: white;
 	text-align: center;
 	font-size: 11px;
@@ -73,30 +96,17 @@
 	color: black;
 }
 
-.ui-uploader-sorter.pull-right {
-	float: right;
-	margin-top: 4px;
-    margin-bottom: 4px;
-    width: 12px;
-    height: 12px;
-	background-position: -12px -26px;
-}
-
-.ui-uploader-sorter.pull-left {
-	float: left;
-	margin-top: 4px;
-    margin-bottom: 4px;
-    width: 12px;
-    height: 12px;
-	background-position: 0 -26px;
-}
-
 .ui-uploader-sortable .ui-uploader-sorter {
 	display: inline;
 	width: 12px;
 	height: 12px;
 	line-height: 12px;
 	margin: 4px 0;
+}
+
+.thumb-imgs ul li {
+	float:left;
+	margin: 5px;
 }
 
 .images_list_ul {
@@ -111,12 +121,11 @@
 	box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
 }
 
-.images_list_ul a {
-	width: 12px;
-	height: 12px;
-	line-height: 12px;
-	position: absolute;
-	right: -3px;
-	top: -3px;
-	background: url(upimg.png) no-repeat 0 0;
+.image_box {
+	position: relative;
+	margin: 0 5px 5px 0;
+	padding: 3px;
+	border: 1px solid #DDD;
+	background-color: white;
+	box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
 }

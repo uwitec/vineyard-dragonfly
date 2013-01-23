@@ -5,9 +5,11 @@
 // the compiled file.
 //
 //= require jquery
+//= require jquery.jqzoom-core 
 //= require jquery.validate.min
 //= require jquery.form
 //= require jquery-ui-1.8.22.custom.min
+//= require jquery.lazyload
 //= require admin
 //= require cities
 //= require home
