@@ -1,0 +1,792 @@
+// Place all the styles related to the home controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, font, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	outline: 0;
+	font-size: 100%;
+	vertical-align: baseline;
+	background: transparent;
+}
+
+
+body {
+	color: #2A2A2A;
+	background-color: #F2F2F2;
+	background-image: url(bg-v1.png);
+}
+
+#header {
+	background: url(nav_bg_v1.png) repeat-x;
+	margin-bottom: 10px;
+}
+
+#info_bar {
+	overflow: hidden;
+	zoom: 1;
+	height: 65px;
+	backgroud: url(tutor_nav_icon_v1.png) no-repeat 0 -160px;
+}
+
+#info_bar .logo {
+	width: 165px;
+	height: 60px;
+	display: block;
+	text-indent: 60px;
+	line-height: 60px;
+	float: left;
+	margin-left: -2px;
+	font-size: 14px;
+	font-weight: bold;
+}
+
+#info_bar .down_app {
+	background: url(mobile_client_icon_v1.png) no-repeat;
+	width: 120px;
+	height: 30px;
+	text-indent: -9999px;
+	display: block;
+	float: left;
+	margin: 17px 13px 13px 17px;
+}
+
+.info_show {
+	margin-top: 10px;
+}
+
+#show_login {
+	margin-top: 10px;
+}
+
+.login_methods .regist, .login_methods .login {
+	background: url(nav_button_icon_v1.png) no-repeat 0 -280px;
+	display: block;
+	width: 47px;
+	height: 24px;
+	line-height: 24px;
+	text-align: center;
+	float: left;
+	color: white;
+	font-weight: bold;
+	margin-right: 7px;
+}
+
+.login_methods .other_login {
+	margin: 3px 0 0 18px;
+}
+
+.login_methods .login_bg {
+	background: url(login_method_v1.png) no-repeat 0 0;
+	padding: 0 0 0 19px;
+	color: #666;
+	margin-right: 5px;
+	display: inline-block;
+}
+
+.login_methods .qq_login {
+	background-position: 0 -25px;
+}
+
+.login_methods .tb_login {
+	background-position: 0 -51px;
+}
+
+.login_methods .douban_login {
+	background-position: 10px -100px;
+}
+
+.login_methods .wy_login {
+background-position: 10px -130px;
+}
+
+.login_methods .rr_login {
+	background-position: 10px -160px;
+}
+
+.login_methods .more_login {
+	color: #666;
+	position: relative;
+	margin-right: 20px;
+	height: 20px;
+	line-height: 20px;
+	display: inline-block;
+}
+
+.login_methods .more_login_active {
+}
+
+.login_methods .more_login b {
+	background: url(login_method_v1.png) no-repeat 2px -195px;
+	position: absolute;
+	width: 20px;
+	height: 20px;
+}
+
+.login_methods .more_login:hover b {
+	transform:rotate(180deg);
+	-ms-transform:rotate(180deg); /* IE 9 */
+	-moz-transform:rotate(180deg); /* Firefox */
+	-webkit-transform:rotate(180deg); /* Safari and Chrome */
+	-o-transform:rotate(180deg); /* Opera */
+	
+}
+
+.account_nav {
+	float: left;
+	background: url(/assets/nav_user_info_bg_v1.png) left no-repeat;
+	height: 46px;
+	padding-left: 7px;
+}
+
+.info_show .account_nav li {
+	line-height: 35px;
+	float: left;
+	height: 35px;
+	font-weight: bold;
+	margin-top: 5px;
+	padding-right: 1px;
+}
+
+.info_show .account_nav li p {
+	height: 35px;
+	float: left;
+}
+
+.info_show .account_nav li a {
+	display: inline-block;
+	height: 28px;
+}
+
+.info_show .account_nav .split {
+	background: url(/assets/nav_button_icon_v1.png) no-repeat -199px -365px;
+}
+
+.info_show .account_nav .libg {
+	color: #5B5B5B;
+	padding: 1px 9px 4px 30px;
+}
+
+
+.info_show .account_nav_right {
+	display: inline;
+	float: left;
+	background: url(/assets/nav_user_info_bg_v1.png) right no-repeat;
+	height: 46px;
+	width: 6px;
+}
+
+.shotcuts {
+	height: 46px;
+}
+
+.shotcuts a {
+	line-height: 45px;
+	color: #666;
+	margin-left: 10px;
+}
+
+
+#show_more_login {
+	display: block;
+	position: absolute;
+	background: white;
+	border-radius: 0 0 3px 3px;
+	border: 1px solid #DDD;
+	width: 140px;
+	z-index: 9999;
+}
+
+#show_more_login .login_bg {
+	display: block;
+	height: 28px;
+	line-height: 28px;
+	padding-left: 30px;
+	margin: 0;
+}
+
+#show_more_login .login_bg:hover {
+	background-color:#f7f7f7;
+	color:#ff89a7;
+}
+
+#navigation {
+	height: 40px;
+	line-height: 37px;
+}
+
+
+.fm960 {
+	margin: 0 auto;
+	width: 960px;
+}
+
+.fl {
+	float: left;
+	display: inline;
+}
+
+.fr {
+	float: right;
+	display: inline;
+}
+
+.navi_list {
+	width: 100%;
+}
+
+.navi_list .c {
+	background: #689200;
+	font-weight: bold;
+	border-radius: 7px;
+	padding: 2px 8px 3px;
+}
+
+.navi_list .import {
+	font-size: 14px;
+	font-weight: bold;
+	margin: 0 3px;
+}
+
+.navi_list a {
+	line-height: 16px;
+	color: white;
+	margin: 0 2px;
+}
+.navi_list .split {
+	position: relative;
+}
+
+.navi_list .split {
+	background: url(tutor_nav_icon_v1.png) no-repeat -653px 11px;
+	padding: 0 12px;
+	padding: 0 6px 0 12px	9;
+}
+
+.navi_list li {
+	float: left;
+	padding: 0 12px 0 0;
+	height: 32px;
+	padding: 0 5px 0 0	9;
+}
+
+.navi_list .top_search {
+	margin-top: 6px;
+	padding: 0;
+	float: right;
+}
+
+.navi_list .top_search .ts_txt {
+	width: 170px;
+	height: 24px;
+	line-height: 24px;
+	border: none;
+	margin-right: 1px;
+	padding-left: 3px;
+	color: #999;
+	border-radius: 3px 0 0 3px;
+	float: left;
+}
+
+.navi_list .top_search .ts_btn {
+	width: 66px;
+	height: 24px;
+	border: none;
+	background: url(tutor_nav_icon_v1.png) -478px 0 no-repeat;
+	cursor: pointer;
+	float: left;
+	margin-top: 1px;
+}
+
+#head_bottom {
+	background: url(nav_bottom_bg_v1.png) repeat-x;
+	height: 25px;
+}
+
+#head, #foot_wrap, #body_wrap {
+	min-width: 960px;
+}
+
+#body {
+	font-size: 12px;
+	color: #484848;
+}
+
+.clearfix {
+	zoom: 1;
+}
+
+.piece_w960 {
+	width: 960px;
+}
+
+.piece {
+	border-radius: 10px;
+}
+
+.piece .piece_hd, .piece .piece_ft {
+	height: 10px;
+	background-color: white;
+	position: relative;
+	font-size: 0;
+}
+
+.piece .piece_hd {
+	border-radius: 10px 10px 0 0;
+}
+
+.piece .piece_hd .hl {
+	position: absolute;
+	background: url(piece_hd_left.png) no-repeat 0px 0px;
+	top: 0px;
+	left: -10px;
+}
+
+.piece .piece_hd .hr {
+	position: absolute;
+	background: url(piece_hd_right.png) no-repeat 0px 0px ;
+	top: 0px;
+	right: -10px;
+}
+
+.index_top .piece_bd {
+	padding: 0 8px;
+}
+
+
+.piece .piece_bd {
+	background-color: white;
+	zoom: 1;
+}
+
+.piece .piece_hd b, .piece .piece_ft b {
+	display: none;
+	display: block	9;
+	height: 10px	9;
+	width: 10px	9;
+	line-height: 10px	9;
+	overflow: hidden	9;
+	font-size: 0;
+}
+
+.piece .piece_ft {
+	border-radius: 0 0 10px 10px;
+}
+
+.piece .piece_ft .fl {
+	position: absolute;
+	background: url(piece_ft_left.png) no-repeat 0px 0px;
+	top: 0px;
+	left: -10px;
+}
+
+.piece .piece_ft .fr {
+	position: absolute;
+	background: url(piece_ft_right.png) no-repeat 0px 0px;
+	top: 0px;
+	right: -10px;
+}
+
+.top_slide {
+	width: 620px;
+	position: relative;
+	float: left;
+}
+
+.top_slide .top_slide_img {
+	height: 283px;
+	width: 439px;
+	position: relative;
+	vertical-align: middle;
+}
+
+
+.top_slide .top_slide_img li.big_slide {
+	position: absolute;
+	z-index: 1;
+	top: 0;
+	left: 0;
+	display: none;
+}
+
+.top_slide .top_slide_img li img {
+	text-align: center;
+	display: table-cell;
+	vertical-align: middle;
+	border: none;
+}
+
+.top_slide_desc {
+	position: relative;
+	z-index: 10;
+	position: absolute;
+}
+
+.top_slide_desc li, .top_slide_desc li a {
+	width: 181px;
+	height: 70px;
+	display: block;
+	overflow: hidden;
+}
+
+.top_slide_desc li img {
+	height: 48px;
+	width: 48px;
+	margin: 11px 0 11px 9px;
+}
+
+.top_slide_desc .light {
+	border-right: 3px solid #FF85B4
+}
+
+.top_slide_desc li h3 {
+	height: 24px;
+	line-height: 24px;
+	font-size: 14px;
+	color: #333;
+	margin: 10px 0 0 20px;
+}
+
+.top_slide_desc li p {
+	color: #999;
+	height: 30px;
+	line-height: 14px;
+	overflow: hidden;
+	margin: 5px 0 0 30px;
+}
+
+.top_slide_desc li, .user_active_list1 li .top_active_btn, .user_active_list2 li, .mobile a, .index_intro, .index_intro ul, .index_intro li, .index_intro li a, .index_intro .inrto_fans, .user_login, .more_goods dt, .more_goods .more_goods_all {
+	background: url(welcome_bg_v1.png) no-repeat 0 0;
+}
+
+.top_slide_desc li {
+	background-position: right -780px;
+	border-bottom: 1px solid #EEE;
+}
+
+.clear_in {
+	overflow: hidden;
+	zoom: 1;
+}
+
+.r5 {
+	border-radius: 5px;
+}
+
+.user_active {
+	width: 303px;
+	height: 283px;
+	overflow: hidden;
+	margin: 0 0 0 641px;
+}
+
+.user_login {
+	height: 74px;
+	margin: 3px 0 0 0;
+	padding: 0 0 10px;
+	background-position: 0 -880px;
+	position: relative;
+}
+
+.user_login .register_btn {
+	height: 72px;
+	width: 152px;
+	top: 0;
+	left: 0;
+}
+
+.user_login .login_sina_btn, .user_login .login_qq_btn, .user_login .login_taobao_btn {
+	width: 16px;
+	height: 16px;
+	top: 37px;
+}
+
+.user_login .login_sina_btn {
+	left: 169px;
+}
+
+.user_login .login_qq_btn {
+	left: 194px;
+}
+
+.user_login .login_taobao_btn {
+	left: 216px;
+}
+
+.user_login a {
+	position: absolute;
+	text-indent: -999em;
+	display: block;
+	overflow: hidden;
+}
+
+.user_info {
+	height: 67px;
+	padding: 10px 0;
+}
+
+.user_info .user_name {
+	color: #FF85B4;
+	font-size: 18px;
+	height: 30px;
+	line-height: 30px;
+	font-weight: bold;
+}
+
+.user_info .feed_link {
+	margin: 0 0 0 15px;
+	color: #666;
+	line-height: 22px;
+}
+
+.user_info .feed_link a {
+	color: #0EB8FF;
+	text-decoration: underline;
+	font-weight: bold;
+	padding-right: 5px!important;
+}
+
+
+.user_active_list1 li {
+	height: 24px;
+	padding: 5px 0;
+	line-height: 24px;
+	border-top: 1px solid #FFEAF2;
+}
+
+.user_active_list1 li a {
+	line-height: 24px;
+	float: left;
+	margin: 0 5px;
+}
+
+.user_active_list1 li a:hover {
+	color: #FF85B4;
+}
+
+
+.user_active_list1 li .top_active_btn {
+	float: right;
+	width: 59px;
+	height: 24px;
+	background-position: right 3px;
+	text-align: center;
+	color: white;
+}
+
+.user_active_list1 li .top_active_btn:hover {
+	color: white;
+}
+
+
+.index_model h2 {
+	font-size: 16px;
+	color: #689200;
+	height: 40px;
+	line-height: 40px;
+	font-family: '微软雅黑E\8F6F\96C5\9ED1';
+	float: left;
+}
+
+.index_model h2 a {
+	font-size: 20px;
+	color: #FF70A7;
+}
+
+
+.index_model .piece_bd {
+	padding: 0 20px;
+}
+
+.index_model .goods_list {
+	width: 915px;
+}
+
+.index_model .goods_list li {
+	position: relative;
+	float: left;
+	margin: 0 0 0 3px;
+}
+
+.index_model .goods_list span {
+	position: absolute;
+	display: block;
+	height: 27px;
+	width: 136px;
+	bottom: 0;
+	left: 0;
+	line-height: 27px;
+	background: url(translucence_v1.png) no-repeat 0 0;
+	color: #FF70A7;
+	font-weight: bold;
+	font-size: 16px;
+	text-align: center;
+}
+
+.index_model .goods_list .more_goods_all {
+	position: absolute;
+	right: 8px;
+	top: 0;
+	width: 55px;
+	height: 37px;
+	background-position: right -1030px;
+	line-height: 37px;
+	text-align: center;
+	font-size: 14px;
+	color: white;
+	font-weight: bold;
+}
+
+.feed_coupon {
+	overflow: hidden;
+	margin-top: 7px;
+}
+
+.feed_coupon p {
+	color: #999;
+	font-family: '微软雅黑';
+	line-height: 16px;
+}
+
+
+.feed_coupon p .p {
+	color: #88B713;
+	text-decoration: line-through;
+}
+
+.feed_coupon p .z {
+	color: #FF7237;
+	font-weight: bold;
+}
+
+.feed_coupon .free_book_tip {
+	background: url(welcome_free_bg.png) no-repeat;
+	width: 50px;
+	height: 33px;
+	color: white;
+	display: inline-block;
+	font-size: 16px;
+	padding-right: 18px;
+	text-align: center;
+	font-family: '微软雅黑',tahoma;
+	float: left;
+	font-weight: bold;
+	line-height: 33px;
+	margin-right: 3px;
+}
+
+
+.new_tip {
+	display: inline-block;
+	height: 24px;
+	margin-left: 5px;
+}
+
+.new_tip em {
+	background: url(welcome_new_tip.png) no-repeat;
+	padding-left: 16px;
+	font-style: normal;
+	font-size: 12px;
+	height: 24px;
+	line-height: 22px;
+	float: left;
+	color: #FF5C9B;
+}
+
+.new_tip i {
+	background: url(welcome_new_tip.png) no-repeat right 0;
+	width: 10px;
+	height: 21px;
+	float: left;
+}
+
+#foot_wrap {
+	clear: both;
+	background: url(foot_top_bg.png) center 0 no-repeat;
+	overflow: hidden;
+	margin: 25px 0 0 0;
+}
+
+#foot {
+	padding-top: 30px;
+	margin: 10px auto;
+	position: relative;
+	text-align: center;
+	background: url(foot_bg_v1.jpg)
+}
+
+.mt10 {
+	margin-top: 10px!important;
+}
+
+.mt15 {
+	margin-top: 15px!important;
+}
+
+#foot .bq {
+	bottom: 15px;
+	color: #999;
+	font-size: 12px;
+}
+
+#foot ul li {
+	width: 125px;
+	height: 44px;
+	float: left;
+	margin-right: 40px;
+	margin-left: 40px;
+	display: inline;
+}
+
+#foot ul li, #foot ul li i {
+	background: url(footer.png) no-repeat;
+}
+
+#foot ul li.product_protection {
+	background-position: 0px -44px;
+	width: 168px;
+}
+
+#foot ul li.free_shipping {
+	background-position: 0px -88px;
+	width: 175px;
+	margin-right: 35px;
+}
+
+#foot ul li.customer_protection {
+	background-position: -2px -138px;
+	width: 175px;
+}
+
+.back2top_fat {
+	position: fixed;
+	z-index: 999;
+	right: 4px;
+	bottom: 4px;
+	width: 53px;
+	height: 53px;
+	display: none;
+}
+
+.back2top_fat .b_img {
+	background: url(book_back2top_v1.png) no-repeat;
+	display: block;
+	height: 50px;
+	width: 50px;
+}
+
+ol, ul {
+	list-style: none;
+}
+
+a {
+	text-decoration: none;
+	outline: none;
+}
+
+body, textarea, pre, input {
+	font: 12px/1.6 tahoma,arial,sans-serif;
+}
+
+
