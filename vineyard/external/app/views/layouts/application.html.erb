@@ -1,14 +1,135 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>External</title>
+  <title>葡萄庄园</title>
   <%= stylesheet_link_tag    "application" %>
-  <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
 </head>
 <body>
 
-<%= yield %>
+<div id="header">
+	<div id="info_bar" class="fm960">
+		<div class="fl">
+			<a class="logo" title="葡萄庄园">葡萄庄园</a>
+			<a class="down_app" target="_blank"></a>
+		</div>
+		<div class="info_show fr">
+			<% if session[:account_id] != nil %>
+			<ul class="account_nav">
+				<li>
+				<p>
+				<a href="" target="_blank" style="font-size: 12px; color: #FF69A2!important; margin-left: 5px; padding: 0 10px 0 0;"><%= session[:account_name]%></a>
+				</p>
+				</li>
+				<li>
+				<p class="split">
+				<a class="libg">喜好</a>
+				</p>
+				</li>
+				<li>
+				<p class="split">
+				<a class="libg">小组</a>
+				</p>
+				</li>
+				<li>
+				<p class="split">
+				<a class="libg">专享优惠</a>
+				</p>
+				</li>
+				<li>
+				<p class="split">
+				<a class="libg">积分兑换</a>
+				</p>
+				</li>
+			</ul>
+			<i class="account_nav_right"></i>
+			<div class="shotcuts fl">
+				<a>设置</a>
+				<a href="/accounts/<%= session[:account_id]%>/logout" class="logout">退出</a>
+			</div>
+			<% else %>
+			<ul class="login_methods" id="show_login">
+				<li class="fl">
+					<a class="regist" target="_blank">注册</a>
+					<a class="login">登录</a>
+				</li>
+				<li class="other_login fl">
+					<a class="login_bg weibo_login">微博登录</a>
+					<a class="login_bg qq_login">QQ登录</a>
+					<a class="login_bg tb_login">淘宝登录</a>
+					<a class="more_login">更多<b></b></a>
+					</li>
+			</ul>
+			<% end %>
+		</div>
+		<% if session[:account_id] == nil %>
+		<ul id="show_more_login" class="login_methods" style="top: 43px; left: 1083px; display: none; ">
+			<li>
+				<a class="login_bg douban_login">用豆瓣帐号登录</a>
+			</li>
+			<li>
+				<a class="login_bg wy_login">用网易微博登录</a>
+			</li>
+			<li>
+				<a class="login_bg rr_login">用人人网登录</a>
+			</li>
+		</ul>
+		<% end %>
+	</div>
+	<div id="navigation" class="fm960">
+		<ul class="navi_list fl">
+			<li>
+				<a class="import c" style="padding:2px 8px 3px" href="/">首页</a>
+			</li>
+			<li class="split">
+				<a class="import">我的庄园</a>
+			</li>
+			<li class="split">
+				<a class="import">品牌酒庄</a>
+			</li>
+			<li class="split">
+				<a class="import">高质低价</a>
+			</li>
+			<li class="split">
+				<img src="/assets/new_tip.png" style="position: absolute; top: -9px;margin-left:12px;" title="new"></img>
+				<a class="import">礼品专区</a>
+			</li>
+			<li class="split">
+				<a>招商加盟</a>
+				<a>关于我们</a>
+			</li>
+			<li class="top_search" id="top_search_form">
+				<form target="_blank" method="get" id="search_form">
+					<input type="text" name="q" class="ts_txt fl" value="何以解憂，唯有杜康" autocomplete="off" def-val="何以解憂，唯有杜康" style="color: rgb(204, 204, 204); ">
+					<input type="submit" value=" " class="ts_btn">
+				</form>
+			</li>
+		</ul>	
+	</div>
+	<div id="head_bottom"></div>
+</div>
+
+<div id="body_wrap">
+	<div id="body" class="fm960 clearfix">
+		<%= yield %>
+	</div>
+</div>
+
+<div id="foot_wrap">
+	<div id="foot" class="fm960">
+		<div> 
+			<ul >
+				<li></li>	
+				<li class="product_protection"></li>
+				<li class="free_shipping"></li>
+				<li class="customer_protection"></li>
+			</ul>
+		</div>	
+		<div style="clear: both; margin: 10px; padding: 10px;">
+			<span class="bq" title="">©Copyright 2012-2013 葡萄庄园 All rights reserved</span>
+		</div>
+	</div>
+</div>
 
 </body>
 </html>

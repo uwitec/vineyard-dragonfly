@@ -1,0 +1,120 @@
+<div id="content_body">
+	<div class="piece piece_w960 index_top">
+		<div class="piece_hd">
+			<b class="hl"></b>
+			<b class="hr"></b>
+		</div>
+		<div class="piece_bd">
+			<div class="top_slide clear_in r5">
+				<ul class="top_slide_img fr">
+					<% @l1_products.each do |product| %>
+						<li class="big_slide" style="display: none;"><a href="wines/<%= product.id %>" target="_blank"><img ></a></li>
+					<% end %>
+				</ul>
+				<ul class="top_slide_desc">
+					<% @l1_products.each do |product| %>
+						<li class>
+						<a href="wines/<%= product.id %>" target="_blank"><h3>【<%= product.id %>】</h3><p><%= product.id %></p></a>
+					</li>
+					<% end %>
+				</ul>
+			</div>	
+			<div class="user_active">
+			<% if session[:account_id] == nil %>
+				<div class="user_login">
+					<a href="/accounts/new" target="_blank" class="register_btn">立即注册</a>
+					<a href="" class="login_sina_btn"></a>
+					<a href="" class="login_qq_btn"></a>
+					<a href="" class="login_taobao_btn"></a>
+				</div>
+			<% else %>
+				<div class="user_info">
+					<div class="user_name">
+						<a href="" target="_blank"><%= session[:account_name] %></a>
+					</div>
+					<p class="feed_link">
+					欢迎回来,当前购物车里还没有商品
+					</p>
+					<p class="feed_link">
+					前往<a href="">结算中心</a>
+					</p>
+				</div>
+			<% end %>
+				<ul class="user_active_list1"> 
+					<li class="clear_in">
+					<a href="" target="_blank">诚招代理-原装-红酒...马上报名</a>
+					<a href="" class="top_active_btn" target="_blank">加盟</a>
+					</li>
+					<li class="clear_in"><a>厦门地区满150送贷上门</a><a class="top_active_btn">抢购</a></li>
+					<li class="clear_in"><a>邀请好友豪送优惠券</a><a class="top_active_btn">邀请</a></li>
+					<li class="clear_in"><a>奉献爱心，关注希望工程</a><a class="top_active_btn">捐赠</a></li>
+				</ul>
+			</div>
+		</div>
+		<div class="piece_ft">
+			<b class="fl"></b>
+			<b class="fr"></b>
+		</div>
+	</div>
+	<div class="piece piece_w960 index_model mt15">
+		<div class="piece_hd">
+			<b class="hl"></b>
+			<b class="hr"></b>
+		</div>
+		<div class="piece_bd clearfix">
+			<h2>热卖推荐<a href="" class="new_tip"><em>今日新上</em><i></i></a></h2>
+			<ul class="goods_list clear_in r5" style="height: 150px">
+				<% index = 0 %>
+				<% @l2_products.each do |product| %>
+					<% if index == 0 %>
+						<li class="fl" style="margin: 0;">
+							<a href="wines/<%= product.id %>" target="_blank"><img><span><%= product.id %></span></a>
+						</li>
+						<% index += 1 %>
+					<% else %>
+						<li class="fl">
+							<a href="wines/<%= product.id %>" target="_blank"><img><span><%= product.id %></span></a>
+						</li>
+					<% end %>
+				<% end %>
+			</ul>
+			<ul class="goods_list clear_in">
+				<% index = 0 %>
+				<% @l2_products.each do |product| %>
+					<%if index == 0 %>
+						<li class="fl" style="margin: 0; width: 136px;">		
+							<div class="feed_coupon">	
+								<a class="free_book_tip">折</a>
+								<br><br>
+								<p>原价：<i class="p"><%= product.price %></i></p>
+								<p>现价：<i class="z"><%= product.price %></i></p>
+							</div>
+						</li>
+						<% index += 1 %>
+					<% else %>
+						<li class="fl">
+							<div class="feed_coupon" style="width: 125px;">	
+								<a class="free_book_tip">折</a>
+								<br><br>
+								<p>原价：<i class="p"><%= product.price %></i></p>
+								<p>现价：<i class="z"><%= product.price %></i></p>
+							</div>
+						</li>
+						<% index += 1 %>
+					<% end %>
+				<% end %>
+			</ul>
+		</div>
+		<div class="piece_ft">
+			<b class="fl"></b>
+			<b class="fr"></b>
+		</div>
+	</div>
+</div>
+
+<%= javascript_include_tag "home" %>
+
+<script type="text/javascript">
+	$('.top_slide .top_slide_img li:first').show();
+	$('.top_slide .top_slide_desc li:first').addClass("light");
+</script>
