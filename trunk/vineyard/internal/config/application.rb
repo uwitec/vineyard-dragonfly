@@ -6,6 +6,7 @@ require "action_mailer/railtie"
 require "active_resource/railtie"
 require "rails/test_unit/railtie"
 require "sprockets/railtie"
+require "mongoid/railtie" 
 
 if defined?(Bundler)
   # If you precompile assets before deploying to production, use this line
@@ -51,7 +52,7 @@ module Internal
     config.assets.version = '1.0'
 
 		config.generators do |g|
-			g.orm :mongo_mapper
+			g.orm :mongoid
 		end
 
 		config.middleware.use "ServeGridfsImage"
