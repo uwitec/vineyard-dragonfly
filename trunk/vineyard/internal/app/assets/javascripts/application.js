@@ -17,5 +17,5 @@
 //= require logins
 //= require products
 //= require quota
-//= require resources
+//= require pinup
 
