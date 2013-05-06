@@ -31,6 +31,7 @@ Internal::Application.routes.draw do
 			post 'delete'
 		end
 		resources :images
+		resources :pinup
 	end
 
   #resources :resources do

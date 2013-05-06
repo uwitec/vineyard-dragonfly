@@ -7,5 +7,5 @@ ActiveSupport::Inflector.inflections do |inflect|
 #   inflect.singular /^(ox)en/i, '\1'
 #   inflect.irregular 'person', 'people'
 #   inflect.uncountable %w( fish sheep )
-	inflect.uncountable %w( quota admin goods )
+	inflect.uncountable %w( quota admin pinup )
 end
