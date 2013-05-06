@@ -84,8 +84,9 @@
 						<%= product.vender %>
 					</td>
 					<td class="operate text-center">
-						<a href="##" class="quota_dialog_button" name=<%= product.id %>>配额</a>
+						<!--<a class="quota_dialog_button" name=<%= product.id %>>配额</a>-->
 						<%= link_to '图片', product_images_path(product) %>
+						<%= link_to "橱位", "/products/" + product.id.to_s + "/pinup", :class => "pinup", :pid => product.id.to_s %>
 					</td>
 					<td class="other text-center">
 						<%= link_to '编辑', edit_product_url(product) %>
@@ -115,6 +116,15 @@
 <!-- delete single product form -->
 <%= form_tag("/products/", :method => "delete",:id => "delete_product_form") do %>
 <% end %>
+
+<div id="product_pinup_dialog" title="橱位设置" style="display: none;">
+	<%= render "pinup/form" %>
+</div>
+
+<div id="product_pinup_edit_dialog" title="编辑一级橱位" style="display: none;">
+  <div id="pinup_product_name"></div>
+  <%= render "pinup/form_destroy.html" %>
+</div>
 
 <%= javascript_include_tag "application" %>
 
